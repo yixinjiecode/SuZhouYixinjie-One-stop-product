@@ -1,0 +1,3459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6. Navigations &mdash; NUI-API 3.3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="NUI-API 3.3.0 documentation" href="index.html" />
+    <link rel="prev" title="5. Layouts" href="api-layouts.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="api-layouts.html" title="5. Layouts"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">NUI-API 3.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="navigations">
+<h1>6. Navigations<a class="headerlink" href="#navigations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pager">
+<h2>6.1. Pager<a class="headerlink" href="#pager" title="Permalink to this headline">¶</a></h2>
+<p><p>分页控件。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Pager</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">div </span><span style="color:red">class</span><span style="color:blue">="nui-pager" </span><span style="color:red">style</span><span style="color:blue">="</span><span style="color:red">width</span><span style="color:blue">:500px;</span><span style="color:red">background</span><span style="color:blue">:#ccc;"
+    </span><span style="color:red">totalCount</span><span style="color:blue">="123" </span><span style="color:red">onpagechanged</span><span style="color:blue">="onPageChanged" </span><span style="color:red">sizeList</span><span style="color:blue">="[5,10,20,100]"&gt;
+&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+&lt;</span><span style="color:maroon">script </span><span style="color:red">type</span><span style="color:blue">="text/javascript"&gt;
+    function </span>onPageChanged(e) {
+        alert(e.pageIndex+<span style="color:maroon">":"</span>+e.pageSize);
+    }
+<span style="color:blue">&lt;/</span><span style="color:maroon">script</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4>
+
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>pageIndex</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>页码</p>
+</td>
+<td><p>0</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>pageSize</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>每页多少条</p>
+</td>
+<td><p>10</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>totalCount</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>总记录数</p>
+</td>
+<td><p>0</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>sizeList</p>
+</td>
+<td><p>Array</p>
+</td>
+<td><p>页尺寸数组</p>
+</td>
+<td><p>[10, 20, 50, 100]</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showPageIndex</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示页码</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showPageSize</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示页尺寸</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showPageInfo</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示分页信息</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showReloadButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示刷新按钮</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>update ( index, size, total )</p>
+</td>
+<td></td>
+<td><p>更新分页控件状态。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getTotalPage ( )</p>
+</td>
+<td>
+
+</td>
+<td><p>获取总页数。</p>
+</td>
+<td><p>Number</p>
+</td>
+</tr>
+
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>pagechanged</p>
+</td>
+<td></td>
+<td><p>分页信息改变时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="outlookbar">
+<h2>6.2. OutlookBar<a class="headerlink" href="#outlookbar" title="Permalink to this headline">¶</a></h2>
+<p><p>折叠面板组。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">div </span><span style="color:red">class</span><span style="color:blue">="nui-outlookbar " </span><span style="color:red">activeIndex</span><span style="color:blue">="0" </span><span style="color:red">style</span><span style="color:blue">="</span><span style="color:red">width</span><span style="color:blue">:180px;</span><span style="color:red">height</span><span style="color:blue">:200px;" </span><span style="color:red">autoCollapse</span><span style="color:blue">="true"&gt;
+    &lt;</span><span style="color:maroon">div </span><span style="color:red">title</span><span style="color:blue">="Small Items"&gt;
+        1
+    &lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">div </span><span style="color:red">title</span><span style="color:blue">="Large Items"&gt;
+        2
+    &lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><p><img alt="image0" src="_images/api-outlookbar.jpg" /> <img alt="image1" src="_images/api-outlooktree.jpg" /></p>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>activeIndex</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>选中面板的索引</p>
+</td>
+<td><p>-1</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>autoCollapse</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否自动折叠</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>expandOnLoad</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>各个子面板初始折叠状态</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setGroups ( Array )</p>
+</td>
+<td></td>
+<td><p>设置groups数组</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>addGroup ( Object [, index] )</p>
+</td>
+<td><p>Object：group对象。 index：Number。索引号。</p>
+</td>
+<td><p>增加group。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>removeGroup ( name/index )</p>
+</td>
+<td><p>name：group名称。</p>
+</td>
+<td><p>删除group面板。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>removeAll ( )</p>
+</td>
+<td></td>
+<td><p>删除所有子Group。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>moveGroup ( group, index )</p>
+</td>
+<td></td>
+<td><p>移动group面板到新位置</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>updateGroup ( group, options )</p>
+</td>
+<td></td>
+<td><p>更新group面板</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getGroup ( index ) getGroup ( groupName )</p>
+</td>
+<td></td>
+<td><p>获取group面板对象</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getGroupBodyEl ( index ) getGroupBodyEl ( groupName )</p>
+</td>
+<td></td>
+<td><p>获取group面板对象内容区DOM元素</p>
+</td>
+<td></td>
+</tr>
+
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>activechanged</p>
+</td>
+<td></td>
+<td><p>面板切换时发生</p>
+</td>
+
+</tr>
+
+</table>
+
+<h4 id="group"><p>Group Object</p>
+</h4>
+<p><p>NavBar 面板对象，属性如下：</p>
+</p>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+</th></tr>
+<tr>
+<td><p>name</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>面板名称</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>title</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>标题文本</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>iconCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>标题图标样式类</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>iconStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>标题图标样式</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>headerCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>头部样式类</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>headerStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>头部样式</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>bodyCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>内容区样式类</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>bodyStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>内容区样式</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>visible</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+<tr>
+<td><p>enabled</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否启用</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+<tr>
+<td><p>showCollapseButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示折叠按钮</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+</table></div>
+<div class="section" id="outlookmenu">
+<h2>6.3. OutlookMenu<a class="headerlink" href="#outlookmenu" title="Permalink to this headline">¶</a></h2>
+<p><p>Outlook风格菜单导航控件。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.OutlookBar</p>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>url</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>idField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值字段。</p>
+</td>
+<td><p>id</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>textField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>节点文本字段</p>
+</td>
+<td><p>text</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>iconField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>图标字段</p>
+</td>
+<td><p>iconCls</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>parentField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>父节点字段</p>
+</td>
+<td><p>pid</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>resultAsTree</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>url数据是否列表</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>dataField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据列表字段</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>imgPath</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>节点图片路径。节点可以设置&#8221;img&#8221;属性。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>load ( Array )</p>
+</td>
+<td>
+</td>
+<td><p>加载树形数据。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getSelected ( )</p>
+</td>
+<td>
+</td>
+<td><p>获取选中项。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>selectNode ( node )</p>
+</td>
+<td></td>
+<td><p>选中节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>loadList ( Array, idField, parentField )</p>
+</td>
+<td>
+</td>
+<td><p>加载列表数据。比如：tree.loadList(list, &#8220;id&#8221;, &#8220;pid&#8221;)</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getList ( )</p>
+</td>
+<td>
+</td>
+<td><p>获取节点数组。</p>
+</td>
+<td><p>Array</p>
+</td>
+</tr>
+<tr>
+<td><p>findNodes ( fn, scope )</p>
+</td>
+<td>
+</td>
+<td><p>查找节点数据。如： var nodes = tree.findNodes(function(node){
+if(node.name.indexOf(&#8220;abc&#8221;) != -1) return true; });</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>itemclick</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+item: Object
+}
+</pre>
+</td>
+<td><p>项点击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>itemselect</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+item: Object
+}
+</pre>
+</td>
+<td><p>项选中时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="outlooktree">
+<h2>6.4. OutlookTree<a class="headerlink" href="#outlooktree" title="Permalink to this headline">¶</a></h2>
+<p><p>Outlook风格树形导航控件。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.OutlookBar</p>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>url</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>idField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值字段。</p>
+</td>
+<td><p>id</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>textField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>节点文本字段</p>
+</td>
+<td><p>text</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>iconField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>图标字段</p>
+</td>
+<td><p>iconCls</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>parentField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>父节点字段</p>
+</td>
+<td><p>pid</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>resultAsTree</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>url数据是否列表</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>expandOnLoad</p>
+</td>
+<td><p>Boolean/Number</p>
+</td>
+<td><p>加载后是否展开。比如：true展开所有节点；0展开第一级节点。以此类推。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>dataField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据列表字段</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>imgPath</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>节点图片路径。节点可以设置&#8221;img&#8221;属性。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>load ( Array )</p>
+</td>
+<td>
+</td>
+<td><p>加载树形数据。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>loadList ( Array, idField, parentField )</p>
+</td>
+<td>
+</td>
+<td><p>加载列表数据。比如：tree.loadList(list, &#8220;id&#8221;, &#8220;pid&#8221;)</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getSelected ( )</p>
+</td>
+<td>
+</td>
+<td><p>获取选中节点。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getNode ( value )</p>
+</td>
+<td></td>
+<td><p>根据值获取节点对象</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>expandPath ( node )</p>
+</td>
+<td></td>
+<td><p>展开节点路径</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>selectNode ( node )</p>
+</td>
+<td></td>
+<td><p>选中节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getList ( )</p>
+</td>
+<td>
+</td>
+<td><p>获取节点数组。</p>
+</td>
+<td><p>Array</p>
+</td>
+</tr>
+<tr>
+<td><p>findNodes ( fn, scope )</p>
+</td>
+<td>
+</td>
+<td><p>查找节点数据。如： var nodes = tree.findNodes(function(node){
+if(node.name.indexOf(&#8220;abc&#8221;) != -1) return true; });</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>nodeclick</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+node: Object,
+isLeaf: Boolean
+}
+</pre>
+</td>
+<td><p>节点点击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>nodeselect</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+node: Object,
+isLeaf: Boolean
+}
+</pre>
+</td>
+<td><p>节点选中时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforenodeexpand</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+tree: Object,         //树对象
+node: Object
+}
+</pre>
+</td>
+<td><p>展开节点前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>nodeexpand</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+tree: Object,         //树对象
+node: Object
+}
+</pre>
+</td>
+<td><p>展开节点后发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforenodecollapse</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+tree: Object,         //树对象
+node: Object
+}
+</pre>
+</td>
+<td><p>折叠节点前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>nodecollapse</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+tree: Object,         //树对象
+node: Object
+}
+</pre>
+</td>
+<td><p>折叠节点后发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="tree">
+<h2>6.5. Tree<a class="headerlink" href="#tree" title="Permalink to this headline">¶</a></h2>
+<p><p>树形控件。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.TreeGrid</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">ul </span><span style="color:red">id</span><span style="color:blue">="tree1" </span><span style="color:red">class</span><span style="color:blue">="nui-tree" </span><span style="color:red">url</span><span style="color:blue">="../data/tree.txt" </span><span style="color:red">style</span><span style="color:blue">="</span><span style="color:red">width</span><span style="color:blue">:300px;</span><span style="color:red">padding</span><span style="color:blue">:5px;"
+    </span><span style="color:red">showTreeIcon</span><span style="color:blue">="true" </span><span style="color:red">textField</span><span style="color:blue">="text" </span><span style="color:red">idField</span><span style="color:blue">="id" &gt;
+&lt;/</span><span style="color:maroon">ul</span><span style="color:blue">&gt;
+</span></pre><div class="highlight-python"><div class="highlight"><pre>&lt;h4&gt;Screenshots&lt;/h4&gt;
+</pre></div>
+</div>
+<div class="figure">
+<img alt="" src="_images/api-tree.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>data</p>
+</td>
+<td><p>Array</p>
+</td>
+<td><p>树形数据对象</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>url</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据加载地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>选中的节点值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>idField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值字段。</p>
+</td>
+<td><p>id</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>textField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>节点文本字段</p>
+</td>
+<td><p>text</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>iconField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>图标字段</p>
+</td>
+<td><p>iconCls</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>nodesField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>子级节点字段</p>
+</td>
+<td><p>children</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>parentField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>父节点字段</p>
+</td>
+<td><p>pid</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>imgField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>节点图片字段。</p>
+</td>
+<td><p>img</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>imgPath</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>节点图片路径。节点可以设置&#8221;img&#8221;属性。</p>
+</td>
+<td><p>img</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>resultAsTree</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>url数据是否列表</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>dataField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据列表字段</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>checkRecursive</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否联动选择父子节点。比如选中父节点，自动全选子节点。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>autoCheckParent</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否自动选择父节点。比如选中子节点，将父节点也自动选中。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>expandOnLoad</p>
+</td>
+<td><p>Boolean/Number</p>
+</td>
+<td><p>加载后是否展开。比如：true展开所有节点；0展开第一级节点。以此类推。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showTreeIcon</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示节点图标</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showTreeLines</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示树形线条</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>allowSelect</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许选择节点</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showCheckBox</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许Check模式选中节点</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showFolderCheckBox</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>当showCheckBox为true时，是否显示父节点CheckBox</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>showExpandButtons</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示折叠展开图标</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>enableHotTrack</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>移动节点上时高亮显示</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>expandOnDblClick</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>双击节点展开收缩</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>expandOnNodeClick</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>单击节点展开收缩</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>removeOnCollapse</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>收缩节点被删除。极大提升性能。</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>allowLeafDropIn</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否允许拖拽投放到子节点内</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowDrag</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否允许拖拽节点</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowDrop</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否允许投放节点</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>dragGroupName</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>拖拽组名</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>dropGroupName</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>投放组名</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+
+<tr>
+<td><p>load ( url )</p>
+</td>
+<td>
+</td>
+<td><p>加载数据。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>loadData ( Array )</p>
+</td>
+<td>
+</td>
+<td><p>加载树形数据。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>loadList ( Array, idField, parentField )</p>
+</td>
+<td>
+</td>
+<td><p>加载列表数据。比如：tree.loadList(list, &#8220;id&#8221;, &#8220;pid&#8221;)</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getList ( )</p>
+</td>
+<td>
+</td>
+<td><p>获取节点数组</p>
+</td>
+<td><p>Array</p>
+</td>
+</tr>
+<tr>
+<td><p>isChanged ( )</p>
+</td>
+<td>
+</td>
+<td><p>是否已修改</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>accept ( )</p>
+</td>
+<td>
+</td>
+<td><p>清除所有行修改痕迹。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>loadNode ( node )</p>
+</td>
+<td>
+</td>
+<td><p>懒加载节点下一级数据。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getRootNode ( )</p>
+</td>
+<td></td>
+<td><p>获取根节点。</p>
+</td>
+<td><p>Object</p>
+</td>
+</tr>
+<tr>
+<td><p>getAncestors ( node )</p>
+</td>
+<td></td>
+<td><p>获得所有父节点</p>
+</td>
+<td><p>Array</p>
+</td>
+</tr>
+<tr>
+<td><p>getParentNode ( node )</p>
+</td>
+<td></td>
+<td><p>获得父节点</p>
+</td>
+<td><p>Object</p>
+</td>
+</tr>
+<tr>
+<td><p>getChildNodes ( node )</p>
+</td>
+<td></td>
+<td><p>获得子节点集合。</p>
+</td>
+<td><p>Array</p>
+</td>
+</tr>
+<tr>
+<td><p>getAllChildNodes ( node )</p>
+</td>
+<td></td>
+<td><p>获得所有子节点集合。</p>
+</td>
+<td><p>Array</p>
+</td>
+</tr>
+
+<tr>
+<td><p>isAncestor ( pnode, node )</p>
+</td>
+<td></td>
+<td><p>pnode是否是node的父级节点。</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+
+<tr>
+<td><p>isLeaf ( node )</p>
+</td>
+<td></td>
+<td><p>是否叶子节点。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getLevel ( node )</p>
+</td>
+<td></td>
+<td><p>获得节点层级。</p>
+</td>
+<td><p>Number</p>
+</td>
+</tr>
+<tr>
+<td><p>isExpandedNode ( node )</p>
+</td>
+<td></td>
+<td><p>是否展开节点。</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+
+<tr>
+<td><p>isCheckedNode ( node )</p>
+</td>
+<td></td>
+<td><p>是否Check选中的节点。</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>isVisibleNode ( node )</p>
+</td>
+<td></td>
+<td><p>是否显示节点。</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>isEnabledNode ( node )</p>
+</td>
+<td></td>
+<td><p>是否启用节点。</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>bubbleParent ( node, fn, scope )</p>
+</td>
+<td></td>
+<td><p>由当前节点开始一直上溯到根节点，调用fn，直到fn返回false为止。</p>
+</td>
+<td><p>Control</p>
+</td>
+</tr>
+<tr>
+<td><p>cascadeChild ( node, fn, scope )</p>
+</td>
+<td></td>
+<td><p>遍历所有层次的子节点, 直到返回false</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>eachChild ( node, fn, scope )</p>
+</td>
+<td></td>
+<td><p>遍历下一级子节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>removeNodes ( nodes )</p>
+</td>
+<td></td>
+<td><p>删除多个节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>removeNode（node）</p>
+</td>
+<td></td>
+<td><p>删除节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>addNodes ( nodes, parentNode )</p>
+</td>
+<td></td>
+<td><p>增加多个节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>addNode ( node, index, parentNode )</p>
+</td>
+<td></td>
+<td><p>加入节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>updateNode ( node, options )</p>
+</td>
+<td></td>
+<td><p>更新节点内容。比如：tree.updateNode(node, {text: &#8220;abc&#8221;});</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>moveNode（node, targetNode, action）</p>
+</td>
+<td></td>
+<td><p>移动节点。action值：before|after|add。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setNodeText ( node, String )</p>
+</td>
+<td></td>
+<td><p>设置节点文本</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setNodeIconCls ( node, String)</p>
+</td>
+<td></td>
+<td><p>设置节点图标</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getNode ( value )</p>
+</td>
+<td></td>
+<td><p>根据值获取节点对象</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>enableNode ( node )</p>
+</td>
+<td></td>
+<td><p>启用节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>disableNode ( node )</p>
+</td>
+<td></td>
+<td><p>禁用节点</p>
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td><p>findNodes ( fn, scope )</p>
+</td>
+<td></td>
+<td><p>查找节点数据。如：</p>
+<pre>
+var nodes = tree.findNodes(function(node){
+if(node.name.indexOf("abc") != -1) return true;
+});
+</pre>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>filter ( fn, scope )</p>
+</td>
+<td></td>
+<td><p>过滤。如：</p>
+<pre>
+tree.filter(function(node){
+if(node.name.indexOf("abc") != -1) return true;
+});
+</pre>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>clearFilter ( )</p>
+</td>
+<td></td>
+<td><p>取消过滤</p>
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td><p>expandNode ( node )</p>
+</td>
+<td></td>
+<td><p>展开节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>collapseNode ( node )</p>
+</td>
+<td></td>
+<td><p>收缩节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>expandLevel ( Number )</p>
+</td>
+<td></td>
+<td><p>展开层次节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>collapseLevel ( Number )</p>
+</td>
+<td></td>
+<td><p>折叠层次节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>expandPath ( node )</p>
+</td>
+<td></td>
+<td><p>展开节点路径</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>collapsePath ( node )</p>
+</td>
+<td></td>
+<td><p>折叠节点路径</p>
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td><p>expandAll ( )</p>
+</td>
+<td></td>
+<td><p>展开所有节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>collapseAll ( )</p>
+</td>
+<td></td>
+<td><p>收缩所有节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>scrollIntoView ( node )</p>
+</td>
+<td></td>
+<td><p>视图滚动至节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>selectNode ( node )</p>
+</td>
+<td></td>
+<td><p>选中节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getSelectedNode ( )</p>
+</td>
+<td></td>
+<td><p>获取选中的节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>checkNode ( node )</p>
+</td>
+<td></td>
+<td><p>Check多选节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>uncheckNode ( node )</p>
+</td>
+<td></td>
+<td><p>取消Check多选节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>checkNodes ( nodes )</p>
+</td>
+<td></td>
+<td><p>Check多选多个节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>uncheckNodes ( nodes )</p>
+</td>
+<td></td>
+<td><p>取消Check多选多个节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>checkAllNodes ( )</p>
+</td>
+<td></td>
+<td><p>Check多选所有节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>uncheckAllNodes ( )</p>
+</td>
+<td></td>
+<td><p>取消Check多选所有节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getCheckedNodes ( haveParent )</p>
+</td>
+<td><p>haveParent: Boolean。是否包含父节点。</p>
+</td>
+<td><p>获取Check选中的多个节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue ( haveParent)</p>
+</td>
+<td><p>haveParent: Boolean。是否包含父节点。</p>
+</td>
+<td><p>获取Check选中的节点值</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>drawnode</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean,//是否叶子
+  nodeHtml: String,   //节点html
+  showCheckBox: Boolean,  //是否显示checkbox
+  iconCls: String,//图标样式
+  showTreeIcon: Boolean   //是否显示图标
+}
+</pre>
+</td>
+<td><p>绘制节点时发生</p>
+</td>
+</tr>
+
+<tr>
+<td><p>nodedblclick</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean
+}
+</pre>
+</td>
+<td><p>节点双击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>nodeclick</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean
+}
+</pre>
+</td>
+<td><p>节点点击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>nodemousedown</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean
+}
+</pre>
+</td>
+<td><p>节点鼠标按下时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>dragstart</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object,         //树对象
+  node: Object,           //节点对象
+  nodes: Array,           //节点对象数组
+  dragText: String,         //拖拽节点描述信息
+  cancel: false
+}
+</pre>
+</td>
+<td><p>选择节点前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforenodeselect</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean,
+  cancel: false
+}
+</pre>
+</td>
+<td><p>选择节点前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>nodeselect</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean
+}
+</pre>
+</td>
+<td><p>节点选中时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforeload</p>
+</td>
+<td></td>
+<td><p>数据加载前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>preload</p>
+</td>
+<td></td>
+<td><p>数据加载，设置到Tree前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>loaderror</p>
+</td>
+<td>
+<pre>
+{
+sender: Object, //树对象
+xmlHttp: Object, //ajax对象
+errorMsg: String //错误信息
+errorCode: int  //错误码
+}
+</pre>
+</td>
+<td><p>数据加载错误时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>load</p>
+</td>
+<td></td>
+<td><p>数据加载成功时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>loadnode</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object   //节点对象
+}
+</pre>
+<tr>
+<td><p>beforenodecheck</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean,
+  checked: Boolean,   //Check状态
+  cancel: false
+}
+</pre>
+</td>
+<td><p>Check选择前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>nodecheck</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean
+}
+</pre>
+</td>
+<td><p>Check选择时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforeexpand</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object
+}
+</pre>
+</td>
+<td><p>展开节点前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>expand</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object
+}
+</pre>
+</td>
+<td><p>展开节点后发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforecollapse</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object
+}
+</pre>
+</td>
+<td><p>折叠节点前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>collapse</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object
+}
+</pre>
+</td>
+<td><p>折叠节点后发生</p>
+</td>
+</tr>
+<tr>
+<td><p>drop</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  dragNode: Object, //拖拽的节点
+  dropNode: Object, //目标投放节点
+  dragAction: String//投放方式：add/after/before
+}
+</pre>
+</td>
+<td><p>拖拽投放时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>givefeedback</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object,   //树对象
+  node: Object, //拖拽的节点
+  targetNode: Object,   //目标投放节点
+  effect: String//投放方式：add/after/before/no。
+}
+</pre>
+</td>
+<td><p>拖拽投放前发生。用于决定是否可投放。</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="tabs">
+<h2>6.6. Tabs<a class="headerlink" href="#tabs" title="Permalink to this headline">¶</a></h2>
+<p><p>选项卡。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">div </span><span style="color:red">class</span><span style="color:blue">="nui-tabs" </span><span style="color:red">activeIndex</span><span style="color:blue">="0"  </span><span style="color:red">style</span><span style="color:blue">="</span><span style="color:red">width</span><span style="color:blue">:350px;</span><span style="color:red">height</span><span style="color:blue">:200px;"&gt;
+    &lt;</span><span style="color:maroon">div </span><span style="color:red">title</span><span style="color:blue">="Tab1"&gt;
+        </span>1
+    <span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">div </span><span style="color:red">title</span><span style="color:blue">="Tab2" </span><span style="color:red">iconCls</span><span style="color:blue">="icon-cut" &gt;
+        </span>2
+    <span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">div </span><span style="color:red">title</span><span style="color:blue">="Tab3" </span><span style="color:red">showCloseButton</span><span style="color:blue">="true" &gt;
+        </span>3
+    <span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">div </span><span style="color:red">title</span><span style="color:blue">="Tab4" </span><span style="color:red">showCloseButton</span><span style="color:blue">="true" </span><span style="color:red">enabled</span><span style="color:blue">="false"&gt;
+        </span>4
+    <span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-tabs.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>activeIndex</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>选中面板的索引</p>
+</td>
+<td><p>-1</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>tabAlign</p>
+</td>
+<td><p>left/center/right/fit</p>
+</td>
+<td><p>对齐方式</p>
+</td>
+<td><p>left</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>tabPosition</p>
+</td>
+<td><p>left/top/right/bottom</p>
+</td>
+<td><p>定位方式</p>
+</td>
+<td><p>top</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showBody</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示内容区</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>bodyStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>内容区样式</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>url</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>路径地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>maskOnLoad</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>加载时遮罩。</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>titleField</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>title</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>urlField</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>url</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>dataField</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>数据列表字段</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>plain</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否隐藏头部背景</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setTabs ( Array )</p>
+</td>
+<td></td>
+<td><p>设置tabs数组。tab对象。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getTabs ( )</p>
+</td>
+<td></td>
+<td><p>获取tabs数组</p>
+</td>
+<td><p>Array</p>
+</td>
+</tr>
+<tr>
+<td><p>addTab ( Object [, index] )</p>
+</td>
+<td><p>Object：tab对象。 index：Number。索引号。</p>
+</td>
+<td><p>增加tab。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>removeTab ( name/index )</p>
+</td>
+<td><p>name：tab名称或索引。</p>
+</td>
+<td><p>删除tab面板。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>removeAll ( butTab )</p>
+</td>
+<td><p>butTab：例外的tab。</p>
+</td>
+<td><p>删除所有子tab。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>moveTab ( tab, index )</p>
+</td>
+<td></td>
+<td><p>移动tab面板到新位置</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>updateTab ( tab, options )</p>
+</td>
+<td></td>
+<td><p>更新tab面板</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>activeTab ( tab )</p>
+</td>
+<td></td>
+<td><p>选中tab面板</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getActiveTab ( )</p>
+</td>
+<td></td>
+<td><p>获取选中的tab对象。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getTab ( index/name )</p>
+</td>
+<td></td>
+<td><p>获取面板对象</p>
+</td>
+<td><p>tab</p>
+</td>
+</tr>
+<tr>
+<td><p>load ( url )</p>
+</td>
+<td></td>
+<td><p>加载Tabs的JSON数组</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>loadTab ( url, tab, onTabLoad, onTabDestroy )</p>
+</td>
+<td><p>url：路径地址。 tab：tab对象。 onTabLoad：tab的IFrame加载回调函数。
+onTabDestroy：tab的IFrame销毁回调函数。</p>
+</td>
+<td><p>加载指定tab的内容区域</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>reloadTab ( tab )</p>
+</td>
+<td>
+</td>
+<td><p>重新加载tab。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getTabBodyEl ( tab )</p>
+</td>
+<td>
+</td>
+<td><p>获取Tab的内容区元素。</p>
+</td>
+<td><p>Element</p>
+</td>
+</tr>
+<tr>
+<td><p>getTabIFrameEl ( tab )</p>
+</td>
+<td>
+</td>
+<td><p>获取Tab的IFrame元素。</p>
+</td>
+<td><p>Element</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>beforeactivechanged</p>
+</td>
+<td>
+<pre>
+{
+sender: Object
+tab: Object,
+cancel: false
+}
+</pre>
+</td>
+<td><p>面板切换前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>activechanged</p>
+</td>
+<td>
+<pre>
+{
+sender: Object
+tab: Object
+}
+</pre>
+</td>
+<td><p>面板切换时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforecloseclick</p>
+</td>
+<td>
+<pre>
+{
+sender: Object
+tab: Object,
+cancel: false
+}
+</pre>
+</td>
+<td><p>关闭tab前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>closeclick</p>
+</td>
+<td>
+<pre>
+{
+sender: Object
+tab: Object
+}
+</pre>
+</td>
+<td><p>tab关闭时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>tabload</p>
+</td>
+<td>
+<pre>
+{
+sender: Object
+tab: Object
+}
+</pre>
+</td>
+<td><p>tab内容页面加载完成时激发</p>
+</td>
+</tr>
+<tr>
+<td><p>tabdestroy</p>
+</td>
+<td>
+<pre>
+{
+sender: Object
+tab: Object
+}
+</pre>
+</td>
+<td><p>tab内容页面销毁时激发</p>
+</td>
+</tr>
+</table>
+
+
+<hr />
+
+<h4 id="tab"><p>Tab Object</p>
+</h4>
+<p><p>Tabs 面板对象，属性如下：</p>
+</p>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+</th></tr>
+<tr>
+<td><p>name</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>面板名称</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>title</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>标题文本</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>newLine</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否换行</p>
+</td>
+<td><p>false</p>
+</td>
+
+</tr>
+<tr>
+<td><p>iconCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>标题图标样式类</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>iconStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>标题图标样式</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>headerCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>头部样式类</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>headerStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>头部样式</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>bodyCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>内容区样式类</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>bodyStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>内容区样式</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>visible</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+<tr>
+<td><p>enabled</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否启用</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+<tr>
+<td><p>showCloseButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示关闭按钮</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+<tr>
+<td><p>url</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>路径地址</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>onload</p>
+</td>
+<td><p>Function</p>
+</td>
+<td><p>加载成功时激发</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>ondestroy</p>
+</td>
+<td><p>Function</p>
+</td>
+<td><p>销毁时激发</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>removeAction</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>tab的IFrame销毁时的动作，比如&#8221;close&#8221;,&#8221;cancel&#8221;,&#8221;ok&#8221;。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>refreshOnClick</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>点击tab时不断刷新页面。</p>
+</td>
+<td><p>false</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="menu">
+<h2>6.7. Menu<a class="headerlink" href="#menu" title="Permalink to this headline">¶</a></h2>
+<p><p>菜单控件。可加入菜单项对象MenuItem。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">ul </span><span style="color:red">id</span><span style="color:blue">="menu2" </span><span style="color:red">class</span><span style="color:blue">="nui-menu"&gt;
+    &lt;</span><span style="color:maroon">li</span><span style="color:blue">&gt;
+        &lt;</span><span style="color:maroon">span </span><span style="color:blue">&gt;</span>操作<span style="color:blue">&lt;/</span><span style="color:maroon">span</span><span style="color:blue">&gt;
+        &lt;</span><span style="color:maroon">ul</span><span style="color:blue">&gt;
+            &lt;</span><span style="color:maroon">li </span><span style="color:red">iconCls</span><span style="color:blue">="icon-new" </span><span style="color:red">onclick</span><span style="color:blue">="onItemClick"&gt;</span>新建<span style="color:blue">&lt;/</span><span style="color:maroon">li</span><span style="color:blue">&gt;
+            &lt;</span><span style="color:maroon">li </span><span style="color:red">class</span><span style="color:blue">="separator"&gt;&lt;/</span><span style="color:maroon">li</span><span style="color:blue">&gt;
+            &lt;</span><span style="color:maroon">li </span><span style="color:red">iconCls</span><span style="color:blue">="icon-add" </span><span style="color:red">onclick</span><span style="color:blue">="onItemClick"&gt;</span>增加<span style="color:blue">&lt;/</span><span style="color:maroon">li</span><span style="color:blue">&gt;
+            &lt;</span><span style="color:maroon">li </span><span style="color:red">iconCls</span><span style="color:blue">="icon-edit" </span><span style="color:red">onclick</span><span style="color:blue">="onItemClick"&gt;</span>修改<span style="color:blue">&lt;/</span><span style="color:maroon">li</span><span style="color:blue">&gt;
+            &lt;</span><span style="color:maroon">li </span><span style="color:red">iconCls</span><span style="color:blue">="icon-remove" </span><span style="color:red">onclick</span><span style="color:blue">="onItemClick"&gt;</span>删除<span style="color:blue">&lt;/</span><span style="color:maroon">li</span><span style="color:blue">&gt;
+        &lt;/</span><span style="color:maroon">ul</span><span style="color:blue">&gt;
+    &lt;/</span><span style="color:maroon">li</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">li </span><span style="color:red">class</span><span style="color:blue">="separator"&gt;&lt;/</span><span style="color:maroon">li</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">li </span><span style="color:red">iconCls</span><span style="color:blue">="icon-open" </span><span style="color:red">onclick</span><span style="color:blue">="onItemClick"&gt;</span>打开<span style="color:blue">&lt;/</span><span style="color:maroon">li</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">li </span><span style="color:red">iconCls</span><span style="color:blue">="icon-remove" </span><span style="color:red">onclick</span><span style="color:blue">="onItemClick"&gt;</span>关闭<span style="color:blue">&lt;/</span><span style="color:maroon">li</span><span style="color:blue">&gt;
+&lt;/</span><span style="color:maroon">ul</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-menu.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>vertical</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否竖向</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowSelectItem</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否允许选择菜单项</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>url</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>菜单数据地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+  <tr>
+<td><p>textField</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>text</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>idField</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>id</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>parentField</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>pid</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>resultAsTree</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td></td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>dataField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据列表字段</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>imgPath</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>节点图片路径。节点可以设置&#8221;img&#8221;属性。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setItems ( items )</p>
+</td>
+<td></td>
+<td><p>设置菜单项数组。菜单项对象MenuItem。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>showAtPos ( x, y )</p>
+</td>
+<td></td>
+<td><p>显示菜单</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getSelectedItem ( )</p>
+</td>
+<td></td>
+<td><p>获得选中的菜单项对象。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>load ( url )</p>
+</td>
+<td></td>
+<td><p>加载菜单数据</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>loadList ( Array, idField, parentField )</p>
+</td>
+<td>
+</td>
+<td><p>加载列表数据。比如：tree.loadList(list, &#8220;id&#8221;, &#8220;pid&#8221;)</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>itemclick</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  item: Object,   //项对象
+  isLeaf: Boolean
+}
+</pre>
+</td>
+<td><p>菜单项点击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>itemselect</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  item: Object,   //项对象
+  isLeaf: Boolean
+}
+</pre>
+</td>
+<td><p>菜单项选中时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="menuitem">
+<h2>6.8. MenuItem<a class="headerlink" href="#menuitem" title="Permalink to this headline">¶</a></h2>
+<p><p>菜单项控件。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>text</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>菜单项文本</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>iconCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>菜单项图标类</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>iconStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>菜单项图标</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>iconPosition</p>
+</td>
+<td><p>left/top</p>
+</td>
+<td><p>图标位置</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>menu</p>
+</td>
+<td><p>Menu</p>
+</td>
+<td><p>下一级菜单</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>checked</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否选中</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>checkOnClick</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>点击时是否自动选中</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+   <tr>
+<td><p>groupName</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>菜单项组名称。设置后，会单选菜单项组。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>click</p>
+</td>
+<td></td>
+<td><p>菜单项点击时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="toolbar">
+<h2>6.9. Toolbar<a class="headerlink" href="#toolbar" title="Permalink to this headline">¶</a></h2>
+<p><p>工具栏。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">div </span><span style="color:red">class</span><span style="color:blue">="nui-toolbar"&gt;
+    &lt;</span><span style="color:maroon">a </span><span style="color:red">class</span><span style="color:blue">="nui-button" </span><span style="color:red">iconCls</span><span style="color:blue">="icon-add"&gt;</span>增加<span style="color:blue">&lt;/</span><span style="color:maroon">a</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">a </span><span style="color:red">class</span><span style="color:blue">="nui-button" </span><span style="color:red">iconCls</span><span style="color:blue">="icon-edit"&gt;</span>修改<span style="color:blue">&lt;/</span><span style="color:maroon">a</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">a </span><span style="color:red">class</span><span style="color:blue">="nui-button" </span><span style="color:red">iconCls</span><span style="color:blue">="icon-remove"&gt;</span>删除<span style="color:blue">&lt;/</span><span style="color:maroon">a</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">span </span><span style="color:red">class</span><span style="color:blue">="separator"&gt;&lt;/</span><span style="color:maroon">span</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">a </span><span style="color:red">class</span><span style="color:blue">="nui-button" </span><span style="color:red">plain</span><span style="color:blue">="true"&gt;</span>增加<span style="color:blue">&lt;/</span><span style="color:maroon">a</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">a </span><span style="color:red">class</span><span style="color:blue">="nui-button" </span><span style="color:red">plain</span><span style="color:blue">="true"&gt;</span>修改<span style="color:blue">&lt;/</span><span style="color:maroon">a</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">a </span><span style="color:red">class</span><span style="color:blue">="nui-button" </span><span style="color:red">plain</span><span style="color:blue">="true"&gt;</span>删除<span style="color:blue">&lt;/</span><span style="color:maroon">a</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">span </span><span style="color:red">class</span><span style="color:blue">="separator"&gt;&lt;/</span><span style="color:maroon">span</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">input </span><span style="color:red">class</span><span style="color:blue">="nui-textbox" /&gt;
+    &lt;</span><span style="color:maroon">a </span><span style="color:red">class</span><span style="color:blue">="nui-button" </span><span style="color:red">plain</span><span style="color:blue">="true"&gt;</span>查询<span style="color:blue">&lt;/</span><span style="color:maroon">a</span><span style="color:blue">&gt;
+&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-toolbar.jpg" />
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">6. Navigations</a><ul>
+<li><a class="reference internal" href="#pager">6.1. Pager</a></li>
+<li><a class="reference internal" href="#outlookbar">6.2. OutlookBar</a></li>
+<li><a class="reference internal" href="#outlookmenu">6.3. OutlookMenu</a></li>
+<li><a class="reference internal" href="#outlooktree">6.4. OutlookTree</a></li>
+<li><a class="reference internal" href="#tree">6.5. Tree</a></li>
+<li><a class="reference internal" href="#tabs">6.6. Tabs</a></li>
+<li><a class="reference internal" href="#menu">6.7. Menu</a></li>
+<li><a class="reference internal" href="#menuitem">6.8. MenuItem</a></li>
+<li><a class="reference internal" href="#toolbar">6.9. Toolbar</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api-layouts.html"
+                        title="previous chapter">5. Layouts</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api-navigations.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="api-layouts.html" title="5. Layouts"
+             >previous</a> |</li>
+        <li><a href="index.html">NUI-API 3.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, primeton.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>

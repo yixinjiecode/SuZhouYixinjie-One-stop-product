@@ -1,0 +1,3865 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>4. Lists &mdash; NUI-API 3.3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="NUI-API 3.3.0 documentation" href="index.html" />
+    <link rel="next" title="5. Layouts" href="api-layouts.html" />
+    <link rel="prev" title="3. Forms" href="api-forms.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="api-layouts.html" title="5. Layouts"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api-forms.html" title="3. Forms"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">NUI-API 3.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="lists">
+<h1>4. Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="datagrid">
+<h2>4.1. DataGrid<a class="headerlink" href="#datagrid" title="Permalink to this headline">¶</a></h2>
+<p><p>表格。实现分页加载、自定义列、单元格渲染、行编辑器、锁定列、过滤行、汇总行等功能。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Panel</p>
+<h4><p>Usage</p>
+</h4>
+
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">div </span><span style="color:red">id</span><span style="color:blue">="datagrid1" </span><span style="color:red">dataField</span><span style="color:blue">="data" </span><span style="color:red">class</span><span style="color:blue">="nui-datagrid" </span><span style="color:red">style</span><span style="color:blue">="</span><span style="color:red">width</span><span style="color:blue">:700px;</span><span style="color:red">height</span><span style="color:blue">:250px;"
+    </span><span style="color:red">url</span><span style="color:blue">="org.gocom.components.nui.demo.newdataset.impl.TEmployee.queryEmployee.biz.ext"
+&gt;
+    &lt;</span><span style="color:maroon">div </span><span style="color:red">property</span><span style="color:blue">="columns"&gt;
+        &lt;</span><span style="color:maroon">div </span><span style="color:red">type</span><span style="color:blue">="indexcolumn"&gt;&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+        &lt;</span><span style="color:maroon">div </span><span style="color:red">field</span><span style="color:blue">="loginname" </span><span style="color:red">width</span><span style="color:blue">="120" </span><span style="color:red">headerAlign</span><span style="color:blue">="center" </span><span style="color:red">allowSort</span><span style="color:blue">="true"&gt;</span>员工帐号<span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+        &lt;</span><span style="color:maroon">div </span><span style="color:red">field</span><span style="color:blue">="name" </span><span style="color:red">width</span><span style="color:blue">="120" </span><span style="color:red">headerAlign</span><span style="color:blue">="center" </span><span style="color:red">allowSort</span><span style="color:blue">="true"&gt;</span>姓名<span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+        &lt;</span><span style="color:maroon">div </span><span style="color:red">header</span><span style="color:blue">="工作信息"&gt;
+            &lt;</span><span style="color:maroon">div </span><span style="color:red">property</span><span style="color:blue">="columns"&gt;
+                &lt;</span><span style="color:maroon">div </span><span style="color:red">field</span><span style="color:blue">="dept_name" </span><span style="color:red">width</span><span style="color:blue">="120"&gt;</span>所属部门<span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+                &lt;</span><span style="color:maroon">div </span><span style="color:red">field</span><span style="color:blue">="position_name" </span><span style="color:red">width</span><span style="color:blue">="100"&gt;</span>职位<span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+                &lt;</span><span style="color:maroon">div </span><span style="color:red">field</span><span style="color:blue">="salary" </span><span style="color:red">width</span><span style="color:blue">="100" </span><span style="color:red">allowSort</span><span style="color:blue">="true"&gt;</span>薪资<span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+            &lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+        &lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+    &lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-datagrid.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>data</p>
+</td>
+<td><p>Array</p>
+</td>
+<td><p>数据对象</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>columns</p>
+</td>
+<td><p>Array</p>
+</td>
+<td><p>列集合对象</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>url</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据加载地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>idField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>行数据唯一字段。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>virtualScroll</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否虚拟滚动。当显示的数据超过500以上时，请设置此属性，能极大提升性能。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>pageIndex</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>页码</p>
+</td>
+<td><p>0</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>pageSize</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>每页多少条</p>
+</td>
+<td><p>10</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>sizeList</p>
+</td>
+<td><p>Array</p>
+</td>
+<td><p>页尺寸集合，比如[5,10,100]</p>
+</td>
+<td><p>[5,10,20,50,100]</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>sortField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>排序字段</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>sortOrder</p>
+</td>
+<td><p>asc,desc</p>
+</td>
+<td><p>排序方向</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>totalCount</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>总记录数</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>defaultColumnWidth</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>默认列宽</p>
+</td>
+<td><p>100</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showColumns</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示表头</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showPager</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示分页</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showFooter</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示底部</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showHGridLines</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示横向表格线条</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showVGridLines</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示竖向表格线条</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showFilterRow</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示过滤行</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showSummaryRow</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示汇总行</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowCellWrap</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许单元格换行</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowHeaderWrap</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许表头文本换行</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>allowSortColumn</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许列排序</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowMoveColumn</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许移动列</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowResizeColumn</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许拖拽调节列宽度</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>enableHotTrack</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>移动到行时高亮显示</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowCellSelect</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许选择单元格</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowCellEdit</p>
+</td>
+<td><p>false</p>
+</td>
+<td><p>允许单元格编辑。此模式下，行编辑API将失效。</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>editNextOnEnterKey</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>按回车键进入下一个单元格编辑。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<td><p>editNextRowCell</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>按回车键进入下一行同列的单元格编辑。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>cellEditAction</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>激发单元格编辑的事件，默认是cellclick，也可以配置成celldblclick。</p>
+</td>
+<td><p>cellclick</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowCellValid</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否自动验证，当编辑单元格时。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowRowSelect</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许选择行</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>onlyCheckSelection</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否只通过checkcolumn列选择</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>multiSelect</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许多选行</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+ <tr>
+<td><p>allowUnselect</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许反选。设置true后，点击任意单元格都会选中行，以及取消选中行。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>allowAlternating</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示斑马纹</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>frozenStartColumn</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>锁定开始列</p>
+</td>
+<td><p>-1</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>frozenEndColumn</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>锁定截至列</p>
+</td>
+<td><p>-1</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showPageIndex</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示页码</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showPageSize</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示页尺寸</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>showLoading</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示Loading遮罩效果</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr><tr>
+<td><p>allowResize</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许拖拽调节表格尺寸</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>selectOnLoad</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>加载完是否自动选中</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>collapseGroupOnLoad</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>加载完是否折叠分组</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showEmptyText</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>数据为空时显示提示文本</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>emptyText</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据为空时的提示文本</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>pageIndexField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>分页索引字段名</p>
+</td>
+<td><p>&#8220;pageIndex&#8221;</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>pageSizeField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>分页条数字段名</p>
+</td>
+<td><p>&#8220;pageSize&#8221;</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>sortFieldField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>排序字段的字段名</p>
+</td>
+<td><p>&#8220;sortField&#8221;</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>sortOrderField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>排序方向字段名</p>
+</td>
+<td><p>&#8220;sortOrder&#8221;</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>totalField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>总记录数字段名</p>
+</td>
+<td><p>&#8220;total&#8221;</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>dataField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据字段名</p>
+</td>
+<td><p>&#8220;data&#8221;</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>showPageInfo</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示分页文本信息</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showReloadButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示&#8221;刷新&#8221;分页按钮</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>autoHideRowDetail</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>展开详细行时，自动隐藏其他详细行</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showModified</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示修改的红色小三角</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showColumnsMenu</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示列菜单。实现显示、隐藏列。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+
+<tr>
+<td><p>load ( params, success, fail )</p>
+</td>
+<td><p>params：Object。参数对象。 success：Function。成功回调函数。
+fail：Function。失败回调函数。</p>
+</td>
+<td><p>加载数据。 比如，grid.load({key: &#8220;普元&#8221;})。 后台接收如下信息：</p>
+<pre>
+{
+key: "普元",  //自定义
+pageIndex: 0,
+pageSize: 10,
+sortField: "",
+sortOrder: "asc"
+}
+</pre><p>使用：String key = request.</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>reload ( )</p>
+</td>
+<td>
+</td>
+<td><p>重新加载数据。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>gotoPage ( index, size )</p>
+</td>
+<td></td>
+<td><p>跳转页码。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>sortBy ( sortField, sortOrder )</p>
+</td>
+<td></td>
+<td><p>排序字段</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>clearSort ( )</p>
+</td>
+<td></td>
+<td><p>取消排序。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>groupBy ( field, dir )</p>
+</td>
+<td></td>
+<td><p>分组。比如：grid.groupBy(&#8220;city&#8221;, &#8220;desc&#8221;)</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getResultObject ( )</p>
+</td>
+<td></td>
+<td><p>获取加载的服务端数据对象。一般在onload事件中调用。</p>
+</td>
+<td><p>Object</p>
+</td>
+</tr>
+<tr>
+<td><p>loading ( )</p>
+</td>
+<td></td>
+<td><p>显示加载遮罩。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>unmask ( )</p>
+</td>
+<td></td>
+<td><p>取消遮罩。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>frozenColumns ( start, end )</p>
+</td>
+<td></td>
+<td><p>锁定列。比如：grid.frozenColumns(0, 2)</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>unFrozenColumns ( )</p>
+</td>
+<td></td>
+<td><p>取消锁定列。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>clearGroup ( )</p>
+</td>
+<td></td>
+<td><p>取消分组。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>collapseGroups ( )</p>
+</td>
+<td></td>
+<td><p>折叠所有分组。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>expandGroups ( )</p>
+</td>
+<td></td>
+<td><p>展开所有分组。</p>
+</td>
+<td></td>
+</tr>
+
+
+<tr>
+<td><p>mergeCells ( cells )</p>
+</td>
+<td></td>
+<td><p>合并单元格。比如：</p>
+<pre>
+var cells = [
+{ rowIndex: 1, columnIndex: 0, rowSpan: 1, colSpan: 2 },
+{ rowIndex: 3, columnIndex: 0, rowSpan: 4, colSpan: 3 }
+];
+grid.margeCells(marges);
+</pre>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>mergeColumns ( columns )</p>
+</td>
+<td></td>
+<td><p>自动合并相同值单元格。比如：</p>
+<pre>
+grid.margeColumns(["company"]);//company是某列的name
+</pre>
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td><p>setCurrentCell ( cell )</p>
+</td>
+<td><p>cell: [row, column]</p>
+</td>
+<td><p>设置当前选中单元格。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getCurrentCell ( )</p>
+</td>
+<td></td>
+<td><p>获取当前选中单元格。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>isChanged ( )</p>
+</td>
+<td></td>
+<td><p>获取当前选中单元格。</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>getChanges ( state, onlyField )</p>
+</td>
+<td><p>state: added|modified|removed。如传递null，则获取增删改数据。
+onlyField：Boolean。传递true，modified的行数据将只返回修改的字段。</p>
+</td>
+<td><p>获取增加、删除、修改后的数据集合。row._state为added/modified/removed。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>beginEditCell ( )</p>
+</td>
+<td></td>
+<td><p>对当前选中单元格启动编辑。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>cancelEdit ( )</p>
+</td>
+<td></td>
+<td><p>取消所有行编辑。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>commitEditRow ( row )</p>
+</td>
+<td></td>
+<td><p>提交指定行编辑。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>commitEdit ( )</p>
+</td>
+<td></td>
+<td><p>提交所有行编辑。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>beginEditRow ( row )</p>
+</td>
+<td></td>
+<td><p>启动行编辑。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>cancelEditRow ( row )</p>
+</td>
+<td></td>
+<td><p>取消指定行编辑。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>isEditing ( )</p>
+</td>
+<td></td>
+<td><p>是否有行编辑。</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>isEditingRow ( row )</p>
+</td>
+<td></td>
+<td><p>指定行是否处于编辑状态。</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+
+<tr>
+<td><p>getCellEditor ( column, row )</p>
+</td>
+<td></td>
+<td><p>获取指定列和行的编辑器控件对象。</p>
+</td>
+<td><p>Control</p>
+</td>
+</tr>
+<tr>
+<td><p>getEditorOwnerRow ( editor )</p>
+</td>
+<td></td>
+<td><p>获取编辑器属于哪一行对象</p>
+</td>
+<td></td>
+</tr>
+
+
+<tr>
+<td><p>updateRow ( row, rowData )</p>
+</td>
+<td></td>
+<td><p>更新行（JavaScript）</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>removeRow ( row, autoSelect )</p>
+</td>
+<td></td>
+<td><p>删除行（JavaScript）。autoSelect为true，则删除记录后，自动选择下一条记录。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>removeRows ( rows, autoSelect )</p>
+</td>
+<td></td>
+<td><p>删除多行（JavaScript）。autoSelect为true，则删除记录后，自动选择下一条记录。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>addRows ( rows, index )</p>
+</td>
+<td></td>
+<td><p>增加多行（Javascript）</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>addRow ( row, index )</p>
+</td>
+<td></td>
+<td><p>增加行（Javascript）</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>moveRow ( row, index )</p>
+</td>
+<td></td>
+<td><p>移动行（Javascript）</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>moveUp ( Array )</p>
+</td>
+<td></td>
+<td><p>上移</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>moveDown ( Array )</p>
+</td>
+<td></td>
+<td><p>下移</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>clearRows ( )</p>
+</td>
+<td></td>
+<td><p>清除所有行（Javascript）</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>accept ( )</p>
+</td>
+<td></td>
+<td><p>清除所有行修改痕迹。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>acceptRecord ( row )</p>
+</td>
+<td></td>
+<td><p>清除指定行修改痕迹。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>reject ( )</p>
+</td>
+<td></td>
+<td><p>取消还原数据修改。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>rejectRecord ( row )</p>
+</td>
+<td></td>
+<td><p>取消还原指定行修改。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>indexOf ( row )</p>
+</td>
+<td></td>
+<td><p>获取行索引号</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>isSelected ( row )</p>
+</td>
+<td></td>
+<td><p>是否选中行</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getSelecteds ( )</p>
+</td>
+<td></td>
+<td><p>获取所有选中的行</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getSelected ( )</p>
+</td>
+<td></td>
+<td><p>获取当前选中行</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setSelected ( row )</p>
+</td>
+<td></td>
+<td><p>设置当前选中行</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>select ( row , fireEvent)</p>
+</td>
+<td><p>fireEvent: Boolean。是否激发选择事件。</p>
+</td>
+<td><p>选中行</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>deselect ( row , fireEvent)</p>
+</td>
+<td><p>fireEvent: Boolean。是否激发选择事件。</p>
+</td>
+<td><p>取消选中行</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>selectAll ( fireEvent )</p>
+</td>
+<td><p>fireEvent: Boolean。是否激发选择事件。</p>
+</td>
+<td><p>选中所有行</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>deselectAll ( fireEvent )</p>
+</td>
+<td><p>fireEvent: Boolean。是否激发选择事件。</p>
+</td>
+<td><p>取消选中所有行</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>clearSelect ( fireEvent )</p>
+</td>
+<td><p>fireEvent: Boolean。是否激发选择事件。</p>
+</td>
+<td><p>取消选中所有行</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>selects ( rows , fireEvent)</p>
+</td>
+<td><p>fireEvent: Boolean。是否激发选择事件。</p>
+</td>
+<td><p>选中多行</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>deselects ( rows , fireEvent)</p>
+</td>
+<td><p>fireEvent: Boolean。是否激发选择事件。</p>
+</td>
+<td><p>取消选中多行</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>showAllRowDetail ( )</p>
+</td>
+<td></td>
+<td><p>显示所有行详细</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>hideAllRowDetail ( )</p>
+</td>
+<td></td>
+<td><p>隐藏所有行详细</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>showRowDetail ( row )</p>
+</td>
+<td></td>
+<td><p>显示行详细</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>hideRowDetail ( row )</p>
+</td>
+<td></td>
+<td><p>隐藏行详细</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>isShowRowDetail ( row )</p>
+</td>
+<td></td>
+<td><p>是否显示了行详细</p>
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td><p>getRowDetailCellEl ( row )</p>
+</td>
+<td></td>
+<td><p>获取行详细DOM对象</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>hideColumn ( column )</p>
+</td>
+<td></td>
+<td><p>隐藏列</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>showColumn ( column )</p>
+</td>
+<td></td>
+<td><p>显示列</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setColumnWidth ( column, Number )</p>
+</td>
+<td></td>
+<td><p>设置列宽</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>updateColumn ( column, Object )</p>
+</td>
+<td></td>
+<td><p>更新列内容。例如：grid.updateColumn(&#8220;name&#8221;, {header: &#8220;姓名&#8221;});</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getRow ( index )</p>
+</td>
+<td></td>
+<td><p>获取行对象</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>findRow ( Function )</p>
+</td>
+<td></td>
+<td><p>通过查询函数获取行对象。如：</p>
+<pre>
+var row = grid.findRow(function(row){
+if(row.name == "张三") return true;
+});
+</pre>
+</td>
+<td><p>Object</p>
+</td>
+</tr>
+<tr>
+<td><p>findRows ( Function )</p>
+</td>
+<td></td>
+<td><p>通过查询函数获取行对象数组。如：</p>
+<pre>
+var rows = grid.findRows(function(row){
+if(row.age > 20) return true;
+});
+</pre>
+</td>
+<td><p>Array</p>
+</td>
+</tr>
+<tr>
+<td><p>getColumn ( index/columnName )</p>
+</td>
+<td></td>
+<td><p>获取列对象</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>addRowCls ( row, cls )</p>
+</td>
+<td></td>
+<td><p>增加行样式</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>removeRowCls ( row, cls )</p>
+</td>
+<td></td>
+<td><p>删除行样式</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getFilterCellEl ( column )</p>
+</td>
+<td></td>
+<td><p>获取过滤行单元格DOM对象</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getSummaryCellEl ( column )</p>
+</td>
+<td></td>
+<td><p>获取汇总行单元格DOM对象</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>validate ( )</p>
+</td>
+<td></td>
+<td><p>验证表格所有单元格</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>isValid ( )</p>
+</td>
+<td></td>
+<td><p>是否验证通过</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>scrollIntoView ( row )</p>
+</td>
+<td></td>
+<td><p>定位滚动条到行</p>
+</td>
+<td></td>
+</tr>
+
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>columnschanged</p>
+</td>
+<td>
+
+</td>
+<td><p>列改变时激发。如列显示/隐藏、列宽调整、列增加/删除等情况。</p>
+</td>
+</tr>
+<tr>
+<td><p>rowclick</p>
+</td>
+<td>
+<pre>
+{
+sender: Object, //表格对象
+record: Object //行对象
+}
+</pre>
+
+</td>
+<td><p>行点击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>rowdblclick</p>
+</td>
+<td>
+<pre>
+{
+sender: Object, //表格对象
+record: Object //行对象
+}
+</pre>
+</td>
+<td><p>行双击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>rowmousedown</p>
+</td>
+<td>
+<pre>
+{
+sender: Object, //表格对象
+record: Object //行对象
+}
+</pre>
+</td>
+<td><p>行鼠标按下时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>cellclick</p>
+</td>
+<td>
+<pre>
+{
+sender: Object, //表格对象
+record: Object, //行对象
+column: Object //列对象
+}
+</pre>
+</td>
+<td><p>单元格点击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>cellmousedown</p>
+</td>
+<td>
+<pre>
+{
+sender: Object, //表格对象
+record: Object, //行对象
+column: Object //列对象
+}
+</pre>
+</td>
+<td><p>单元格鼠标按下时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>headercellclick</p>
+</td>
+<td>
+<pre>
+{
+sender: Object, //表格对象
+column: Object //列对象
+}
+</pre>
+</td>
+<td><p>表头单元格点击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>headercellmousedown</p>
+</td>
+<td>
+<pre>
+{
+sender: Object, //表格对象
+column: Object //列对象
+}
+</pre>
+</td>
+<td><p>表头单元格鼠标按下时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>headercellcontextmenu</p>
+</td>
+<td>
+<pre>
+{
+sender: Object, //表格对象
+column: Object //列对象
+}
+</pre>
+</td>
+<td><p>表头单元格点击右键时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforeload</p>
+</td>
+<td></td>
+<td><p>数据加载前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>preload</p>
+</td>
+<td></td>
+<td><p>数据加载，设置到Grid前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>loaderror</p>
+</td>
+<td>
+<pre>
+{
+sender: Object, //表格对象
+xmlHttp: Object, //ajax对象
+errorMsg: String //错误信息
+errorCode: int  //错误码
+}
+</pre>
+</td>
+<td><p>数据加载错误时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>load</p>
+</td>
+<td>
+<pre>
+{
+sender: object, //表格对象
+xhr: object,    //ajax对象
+data: array     //数据
+}
+</pre>
+</td>
+<td><p>数据加载成功时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>update</p>
+</td>
+<td>
+</td>
+<td><p>表格渲染完毕事件</p>
+</td>
+</tr>
+<tr>
+<td><p>drawcell</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+rowIndex: Number,
+columnIndex: Number,
+record: Object,
+column: Object,
+field: String,
+value: String,
+cellHtml: "",
+rowCls: "",
+cellCls: "",
+rowStyle: "",
+cellStyle: ""
+}
+</pre>
+</td>
+<td><p>绘制单元格时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>cellbeginedit</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+rowIndex: Number,
+record: Object,
+column: Object,
+field: String,
+editor: Object,
+value: String,
+cancel: false
+}
+</pre>
+</td>
+<td><p>编辑开始前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>cellcommitedit</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+rowIndex: Number,
+record: Object,
+column: Object,
+field: String,
+editor: Object,
+value: String,
+cancel: false
+}
+</pre>
+</td>
+<td><p>编辑值提交前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>cellendedit</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+rowIndex: Number,
+record: Object,
+column: Object,
+field: String,
+editor: Object,
+value: String
+}
+</pre>
+</td>
+<td><p>编辑结束时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>selectionchanged</p>
+</td>
+<td></td>
+<td><p>行选择改变时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforeselect</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+record: Object,
+cancel: Boolean
+}
+</pre>
+</td>
+<td><p>行选中前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforedeselect</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+record: Object,
+cancel: Boolean
+}
+</pre>
+</td>
+<td><p>行取消选中前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>select</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+record: Object
+}
+</pre>
+</td>
+<td><p>行选中时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>deselect</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+record: Object
+}
+</pre>
+</td>
+<td><p>行取消选中时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>cellvalidation</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+record: Object,
+column: Object,
+field: String,
+value: String,
+isValid: Boolean,  //是否验证通过
+errorText: ""   //错误提示文本
+}
+</pre>
+</td>
+<td><p>编辑结束时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>drawsummarycell</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+records: Array, //行数组
+column: Object,
+field: String,
+value: String,
+cellHtml: "",
+cellCls: "",
+cellStyle: ""
+}
+</pre>
+</td>
+<td><p>绘制汇总单元格事件</p>
+</td>
+</tr>
+<tr>
+<td><p>resize</p>
+</td>
+<td>
+
+</td>
+<td><p>表格拖拽调节尺寸时发生</p>
+</td>
+</tr>
+</table><hr />
+
+<h4 id="columns"><p>Columns</p>
+</h4>
+<p><p>表格列配置集合：columns，是一个数组，如：[column, column,
+...]。其中一个column的配置参数如下表：</p>
+</p>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+</th></tr>
+<tr>
+<td><p>type</p>
+</td>
+<td><p>indexcolumn|checkcolumn|checkboxcolumn|comboboxcolumn</p>
+</td>
+<td><p>列类型。创建几个特殊的列。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>header</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>表头列文本</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>field</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>单元格值字段</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>displayFiled</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>单元格文本字段</p>
+</td>
+<td></td>
+
+</tr>
+
+<tr>
+<td><p>name</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>列标识名称</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>width</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>列宽度</p>
+</td>
+<td></td>
+
+</tr>
+ <tr>
+<td><p>visible</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示</p>
+</td>
+<td></td>
+
+</tr>
+ <tr>
+<td><p>readOnly</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否只读</p>
+</td>
+<td><p>false</p>
+</td>
+
+</tr>
+ <tr>
+<td><p>hideable</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否在表头菜单项显示</p>
+</td>
+<td><p>false</p>
+</td>
+
+</tr>
+<tr>
+<td><p>headerAlign</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>表头列文本位置。left/center/right。</p>
+</td>
+<td><p>left</p>
+</td>
+
+</tr>
+<tr>
+<td><p>align</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>单元格文本位置。left/center/right。</p>
+</td>
+<td><p>left</p>
+</td>
+
+</tr>
+<tr>
+<td><p>headerCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>表头列样式类。</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>cellCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>单元格样式类</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>headerStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>表头列样式</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>cellStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>单元格样式</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>editor</p>
+</td>
+<td><p>Object</p>
+</td>
+<td><p>单元格编辑器。</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>renderer</p>
+</td>
+<td><p>Function</p>
+</td>
+<td><p>单元格绘制处理函数，同drawcell事件。</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>allowMove</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否可移动表头列。</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+<tr>
+<td><p>allowResize</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否拖拽调节表头列宽度。</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+<tr>
+<td><p>autoShowPopup</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>编辑时是否自动显示下拉框。</p>
+</td>
+<td><p>false</p>
+</td>
+
+</tr>
+<tr>
+<td><p>dataType</p>
+</td>
+<td><p>string|int|float|date|boolean|currency</p>
+</td>
+<td><p>数据类型，为客户端排序所用。</p>
+</td>
+<td><p>string</p>
+</td>
+</tr>
+<tr>
+<td><p>currencyUnit</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>货币单位。当dataType=&#8221;currency&#8221;有用。如：￥432,432.00。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>dateFormat</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>日期格式化。如：yyyy-MM-dd HH:mm:ss。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>vtype</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>验证规则，如required,email,url等。具体参考这里。</p>
+</td>
+<td><p>false</p>
+</td>
+</tr>
+<tr>
+<td><p>summaryType</p>
+</td>
+<td><p>count|min|max|sum|avg</p>
+</td>
+<td><p>汇总计算类型。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>summaryRenderer</p>
+</td>
+<td><p>Function</p>
+</td>
+<td><p>汇总单元格渲染函数。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>autoEscape</p>
+</td>
+<td><p>true</p>
+</td>
+<td><p>是否自动转义Html。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>decimalPlaces</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>保留的小数位数，默认2位。</p>
+</td>
+<td></td>
+</tr>
+
+</table></div>
+<div class="section" id="tree">
+<h2>4.2. Tree<a class="headerlink" href="#tree" title="Permalink to this headline">¶</a></h2>
+<p><p>树形控件。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.TreeGrid</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">ul </span><span style="color:red">id</span><span style="color:blue">="tree1" </span><span style="color:red">class</span><span style="color:blue">="nui-tree" </span><span style="color:red">url</span><span style="color:blue">="../data/tree.txt" </span><span style="color:red">style</span><span style="color:blue">="</span><span style="color:red">width</span><span style="color:blue">:300px;</span><span style="color:red">padding</span><span style="color:blue">:5px;"
+    </span><span style="color:red">showTreeIcon</span><span style="color:blue">="true" </span><span style="color:red">textField</span><span style="color:blue">="text" </span><span style="color:red">idField</span><span style="color:blue">="id" &gt;
+&lt;/</span><span style="color:maroon">ul</span><span style="color:blue">&gt;
+</span></pre><div class="highlight-python"><div class="highlight"><pre>&lt;h4&gt;Screenshots&lt;/h4&gt;
+</pre></div>
+</div>
+<div class="figure">
+<img alt="" src="_images/api-tree.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>data</p>
+</td>
+<td><p>Array</p>
+</td>
+<td><p>树形数据对象</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>url</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据加载地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>选中的节点值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>idField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值字段。</p>
+</td>
+<td><p>id</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>textField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>节点文本字段</p>
+</td>
+<td><p>text</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>iconField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>图标字段</p>
+</td>
+<td><p>iconCls</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>nodesField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>子级节点字段</p>
+</td>
+<td><p>children</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>parentField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>父节点字段</p>
+</td>
+<td><p>pid</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>imgField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>节点图片字段。</p>
+</td>
+<td><p>img</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>imgPath</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>节点图片路径。节点可以设置&#8221;img&#8221;属性。</p>
+</td>
+<td><p>img</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>resultAsTree</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>url数据是否列表</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>dataField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据列表字段</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>checkRecursive</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否联动选择父子节点。比如选中父节点，自动全选子节点。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>autoCheckParent</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否自动选择父节点。比如选中子节点，将父节点也自动选中。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>expandOnLoad</p>
+</td>
+<td><p>Boolean/Number</p>
+</td>
+<td><p>加载后是否展开。比如：true展开所有节点；0展开第一级节点。以此类推。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showTreeIcon</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示节点图标</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showTreeLines</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示树形线条</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>allowSelect</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许选择节点</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showCheckBox</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许Check模式选中节点</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showFolderCheckBox</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>当showCheckBox为true时，是否显示父节点CheckBox</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>showExpandButtons</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示折叠展开图标</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>enableHotTrack</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>移动节点上时高亮显示</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>expandOnDblClick</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>双击节点展开收缩</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>expandOnNodeClick</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>单击节点展开收缩</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>removeOnCollapse</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>收缩节点被删除。极大提升性能。</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>allowLeafDropIn</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否允许拖拽投放到子节点内</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowDrag</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否允许拖拽节点</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowDrop</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否允许投放节点</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>dragGroupName</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>拖拽组名</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>dropGroupName</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>投放组名</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+
+<tr>
+<td><p>load ( url )</p>
+</td>
+<td>
+</td>
+<td><p>加载数据。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>loadData ( Array )</p>
+</td>
+<td>
+</td>
+<td><p>加载树形数据。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>loadList ( Array, idField, parentField )</p>
+</td>
+<td>
+</td>
+<td><p>加载列表数据。比如：tree.loadList(list, &#8220;id&#8221;, &#8220;pid&#8221;)</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getList ( )</p>
+</td>
+<td>
+</td>
+<td><p>获取节点数组</p>
+</td>
+<td><p>Array</p>
+</td>
+</tr>
+<tr>
+<td><p>isChanged ( )</p>
+</td>
+<td>
+</td>
+<td><p>是否已修改</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>accept ( )</p>
+</td>
+<td>
+</td>
+<td><p>清除所有行修改痕迹。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>loadNode ( node )</p>
+</td>
+<td>
+</td>
+<td><p>懒加载节点下一级数据。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getRootNode ( )</p>
+</td>
+<td></td>
+<td><p>获取根节点。</p>
+</td>
+<td><p>Object</p>
+</td>
+</tr>
+<tr>
+<td><p>getAncestors ( node )</p>
+</td>
+<td></td>
+<td><p>获得所有父节点</p>
+</td>
+<td><p>Array</p>
+</td>
+</tr>
+<tr>
+<td><p>getParentNode ( node )</p>
+</td>
+<td></td>
+<td><p>获得父节点</p>
+</td>
+<td><p>Object</p>
+</td>
+</tr>
+<tr>
+<td><p>getChildNodes ( node )</p>
+</td>
+<td></td>
+<td><p>获得子节点集合。</p>
+</td>
+<td><p>Array</p>
+</td>
+</tr>
+<tr>
+<td><p>getAllChildNodes ( node )</p>
+</td>
+<td></td>
+<td><p>获得所有子节点集合。</p>
+</td>
+<td><p>Array</p>
+</td>
+</tr>
+
+<tr>
+<td><p>isAncestor ( pnode, node )</p>
+</td>
+<td></td>
+<td><p>pnode是否是node的父级节点。</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+
+<tr>
+<td><p>isLeaf ( node )</p>
+</td>
+<td></td>
+<td><p>是否叶子节点。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getLevel ( node )</p>
+</td>
+<td></td>
+<td><p>获得节点层级。</p>
+</td>
+<td><p>Number</p>
+</td>
+</tr>
+<tr>
+<td><p>isExpandedNode ( node )</p>
+</td>
+<td></td>
+<td><p>是否展开节点。</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+
+<tr>
+<td><p>isCheckedNode ( node )</p>
+</td>
+<td></td>
+<td><p>是否Check选中的节点。</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>isVisibleNode ( node )</p>
+</td>
+<td></td>
+<td><p>是否显示节点。</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>isEnabledNode ( node )</p>
+</td>
+<td></td>
+<td><p>是否启用节点。</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>bubbleParent ( node, fn, scope )</p>
+</td>
+<td></td>
+<td><p>由当前节点开始一直上溯到根节点，调用fn，直到fn返回false为止。</p>
+</td>
+<td><p>Control</p>
+</td>
+</tr>
+<tr>
+<td><p>cascadeChild ( node, fn, scope )</p>
+</td>
+<td></td>
+<td><p>遍历所有层次的子节点, 直到返回false</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>eachChild ( node, fn, scope )</p>
+</td>
+<td></td>
+<td><p>遍历下一级子节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>removeNodes ( nodes )</p>
+</td>
+<td></td>
+<td><p>删除多个节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>removeNode（node）</p>
+</td>
+<td></td>
+<td><p>删除节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>addNodes ( nodes, parentNode )</p>
+</td>
+<td></td>
+<td><p>增加多个节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>addNode ( node, index, parentNode )</p>
+</td>
+<td></td>
+<td><p>加入节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>updateNode ( node, options )</p>
+</td>
+<td></td>
+<td><p>更新节点内容。比如：tree.updateNode(node, {text: &#8220;abc&#8221;});</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>moveNode（node, targetNode, action）</p>
+</td>
+<td></td>
+<td><p>移动节点。action值：before|after|add。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setNodeText ( node, String )</p>
+</td>
+<td></td>
+<td><p>设置节点文本</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setNodeIconCls ( node, String)</p>
+</td>
+<td></td>
+<td><p>设置节点图标</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getNode ( value )</p>
+</td>
+<td></td>
+<td><p>根据值获取节点对象</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>enableNode ( node )</p>
+</td>
+<td></td>
+<td><p>启用节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>disableNode ( node )</p>
+</td>
+<td></td>
+<td><p>禁用节点</p>
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td><p>findNodes ( fn, scope )</p>
+</td>
+<td></td>
+<td><p>查找节点数据。如：</p>
+<pre>
+var nodes = tree.findNodes(function(node){
+if(node.name.indexOf("abc") != -1) return true;
+});
+</pre>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>filter ( fn, scope )</p>
+</td>
+<td></td>
+<td><p>过滤。如：</p>
+<pre>
+tree.filter(function(node){
+if(node.name.indexOf("abc") != -1) return true;
+});
+</pre>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>clearFilter ( )</p>
+</td>
+<td></td>
+<td><p>取消过滤</p>
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td><p>expandNode ( node )</p>
+</td>
+<td></td>
+<td><p>展开节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>collapseNode ( node )</p>
+</td>
+<td></td>
+<td><p>收缩节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>expandLevel ( Number )</p>
+</td>
+<td></td>
+<td><p>展开层次节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>collapseLevel ( Number )</p>
+</td>
+<td></td>
+<td><p>折叠层次节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>expandPath ( node )</p>
+</td>
+<td></td>
+<td><p>展开节点路径</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>collapsePath ( node )</p>
+</td>
+<td></td>
+<td><p>折叠节点路径</p>
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td><p>expandAll ( )</p>
+</td>
+<td></td>
+<td><p>展开所有节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>collapseAll ( )</p>
+</td>
+<td></td>
+<td><p>收缩所有节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>scrollIntoView ( node )</p>
+</td>
+<td></td>
+<td><p>视图滚动至节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>selectNode ( node )</p>
+</td>
+<td></td>
+<td><p>选中节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getSelectedNode ( )</p>
+</td>
+<td></td>
+<td><p>获取选中的节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>checkNode ( node )</p>
+</td>
+<td></td>
+<td><p>Check多选节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>uncheckNode ( node )</p>
+</td>
+<td></td>
+<td><p>取消Check多选节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>checkNodes ( nodes )</p>
+</td>
+<td></td>
+<td><p>Check多选多个节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>uncheckNodes ( nodes )</p>
+</td>
+<td></td>
+<td><p>取消Check多选多个节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>checkAllNodes ( )</p>
+</td>
+<td></td>
+<td><p>Check多选所有节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>uncheckAllNodes ( )</p>
+</td>
+<td></td>
+<td><p>取消Check多选所有节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getCheckedNodes ( haveParent )</p>
+</td>
+<td><p>haveParent: Boolean。是否包含父节点。</p>
+</td>
+<td><p>获取Check选中的多个节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue ( haveParent)</p>
+</td>
+<td><p>haveParent: Boolean。是否包含父节点。</p>
+</td>
+<td><p>获取Check选中的节点值</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>drawnode</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean,//是否叶子
+  nodeHtml: String,   //节点html
+  showCheckBox: Boolean,  //是否显示checkbox
+  iconCls: String,//图标样式
+  showTreeIcon: Boolean   //是否显示图标
+}
+</pre>
+</td>
+<td><p>绘制节点时发生</p>
+</td>
+</tr>
+
+<tr>
+<td><p>nodedblclick</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean
+}
+</pre>
+</td>
+<td><p>节点双击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>nodeclick</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean
+}
+</pre>
+</td>
+<td><p>节点点击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>nodemousedown</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean
+}
+</pre>
+</td>
+<td><p>节点鼠标按下时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>dragstart</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object,         //树对象
+  node: Object,           //节点对象
+  nodes: Array,           //节点对象数组
+  dragText: String,         //拖拽节点描述信息
+  cancel: false
+}
+</pre>
+</td>
+<td><p>选择节点前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforenodeselect</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean,
+  cancel: false
+}
+</pre>
+</td>
+<td><p>选择节点前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>nodeselect</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean
+}
+</pre>
+</td>
+<td><p>节点选中时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforeload</p>
+</td>
+<td></td>
+<td><p>数据加载前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>preload</p>
+</td>
+<td></td>
+<td><p>数据加载，设置到Tree前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>loaderror</p>
+</td>
+<td>
+<pre>
+{
+sender: Object, //树对象
+xmlHttp: Object, //ajax对象
+errorMsg: String //错误信息
+errorCode: int  //错误码
+}
+</pre>
+</td>
+<td><p>数据加载错误时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>load</p>
+</td>
+<td></td>
+<td><p>数据加载成功时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>loadnode</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object   //节点对象
+}
+</pre>
+<tr>
+<td><p>beforenodecheck</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean,
+  checked: Boolean,   //Check状态
+  cancel: false
+}
+</pre>
+</td>
+<td><p>Check选择前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>nodecheck</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object,   //节点对象
+  isLeaf: Boolean
+}
+</pre>
+</td>
+<td><p>Check选择时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforeexpand</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object
+}
+</pre>
+</td>
+<td><p>展开节点前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>expand</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object
+}
+</pre>
+</td>
+<td><p>展开节点后发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforecollapse</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object
+}
+</pre>
+</td>
+<td><p>折叠节点前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>collapse</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  node: Object
+}
+</pre>
+</td>
+<td><p>折叠节点后发生</p>
+</td>
+</tr>
+<tr>
+<td><p>drop</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object, //树对象
+  dragNode: Object, //拖拽的节点
+  dropNode: Object, //目标投放节点
+  dragAction: String//投放方式：add/after/before
+}
+</pre>
+</td>
+<td><p>拖拽投放时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>givefeedback</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object,   //树对象
+  node: Object, //拖拽的节点
+  targetNode: Object,   //目标投放节点
+  effect: String//投放方式：add/after/before/no。
+}
+</pre>
+</td>
+<td><p>拖拽投放前发生。用于决定是否可投放。</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="treegrid">
+<h2>4.3. TreeGrid<a class="headerlink" href="#treegrid" title="Permalink to this headline">¶</a></h2>
+<p><p>树形表格。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.DataGrid</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">div </span><span style="color:red">id</span><span style="color:blue">="treegrid1" </span><span style="color:red">class</span><span style="color:blue">="nui-treegrid" </span><span style="color:red">style</span><span style="color:blue">="</span><span style="color:red">width</span><span style="color:blue">:600px;</span><span style="color:red">height</span><span style="color:blue">:280px;"
+    </span><span style="color:red">url</span><span style="color:blue">="../data/tasks.txt" </span><span style="color:red">showTreeIcon</span><span style="color:blue">="true"
+    </span><span style="color:red">treeColumn</span><span style="color:blue">="taskname" </span><span style="color:red">idField</span><span style="color:blue">="UID" </span><span style="color:red">parentField</span><span style="color:blue">="ParentTaskUID" </span><span style="color:red">resultAsTree</span><span style="color:blue">="false"
+&gt;
+    &lt;</span><span style="color:maroon">div </span><span style="color:red">property</span><span style="color:blue">="columns"&gt;
+        &lt;</span><span style="color:maroon">div </span><span style="color:red">type</span><span style="color:blue">="indexcolumn"&gt;&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+        &lt;</span><span style="color:maroon">div </span><span style="color:red">name</span><span style="color:blue">="taskname" </span><span style="color:red">field</span><span style="color:blue">="Name" </span><span style="color:red">width</span><span style="color:blue">="200"&gt;</span>任务名称<span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+        &lt;</span><span style="color:maroon">div </span><span style="color:red">field</span><span style="color:blue">="Duration" </span><span style="color:red">width</span><span style="color:blue">="100"&gt;</span>工期<span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+        &lt;</span><span style="color:maroon">div </span><span style="color:red">field</span><span style="color:blue">="Start" </span><span style="color:red">width</span><span style="color:blue">="100" </span><span style="color:red">dateFormat</span><span style="color:blue">="yyyy-MM-dd"&gt;</span>开始日期<span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+        &lt;</span><span style="color:maroon">div </span><span style="color:red">field</span><span style="color:blue">="Finish" </span><span style="color:red">width</span><span style="color:blue">="100" </span><span style="color:red">dateFormat</span><span style="color:blue">="yyyy-MM-dd"&gt;</span>完成日期<span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+    &lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-treegrid.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>treeColumn</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>节点列</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>columns</p>
+</td>
+<td><p>Array</p>
+</td>
+<td><p>列集合对象</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowMoveColumn</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许移动列</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowResizeColumn</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许拖拽调节列宽度</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+ <tr>
+<td><p>allowResize</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许拖拽调节表格尺寸</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>drawcell</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+node: Object,
+column: Object,
+field: String,
+value: String,
+cellHtml: "",
+rowCls: "",
+cellCls: "",
+rowStyle: "",
+cellStyle: "",
+isLeaf: Boolean,
+showCheckBox: Boolean,
+showTreeIcon: Boolean
+iconCls: String
+}
+</pre>
+</td>
+<td><p>绘制单元格时发生</p>
+</td>
+</tr>
+</table><hr />
+
+<h4 id="columns"><p>Columns</p>
+</h4>
+<p><p>表格列配置集合：columns，是一个数组，如：[column, column,
+...]。其中一个column的配置参数如下表：</p>
+</p>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+</th></tr>
+
+<tr>
+<td><p>header</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>表头列文本</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>field</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>单元格值字段</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>name</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>列标识名称</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>width</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>列宽度</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>headerAlign</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>表头列文本位置。left/center/right。</p>
+</td>
+<td><p>left</p>
+</td>
+
+</tr>
+<tr>
+<td><p>align</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>单元格文本位置。left/center/right。</p>
+</td>
+<td><p>left</p>
+</td>
+
+</tr>
+<tr>
+<td><p>headerCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>表头列样式类。</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>cellCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>单元格样式类</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>headerStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>表头列样式</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>cellStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>单元格样式</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>editor</p>
+</td>
+<td><p>Object</p>
+</td>
+<td><p>单元格编辑器。</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>renderer</p>
+</td>
+<td><p>Function</p>
+</td>
+<td><p>单元格绘制处理函数，同drawcell事件。</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>allowMove</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否可移动表头列。</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+<tr>
+<td><p>allowResize</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否拖拽调节表头列宽度。</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+</table></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4. Lists</a><ul>
+<li><a class="reference internal" href="#datagrid">4.1. DataGrid</a></li>
+<li><a class="reference internal" href="#tree">4.2. Tree</a></li>
+<li><a class="reference internal" href="#treegrid">4.3. TreeGrid</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api-forms.html"
+                        title="previous chapter">3. Forms</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api-layouts.html"
+                        title="next chapter">5. Layouts</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api-lists.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="api-layouts.html" title="5. Layouts"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api-forms.html" title="3. Forms"
+             >previous</a> |</li>
+        <li><a href="index.html">NUI-API 3.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, primeton.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>

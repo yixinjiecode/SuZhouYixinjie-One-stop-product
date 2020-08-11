@@ -1,0 +1,5910 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3. Forms &mdash; NUI-API 3.3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="NUI-API 3.3.0 documentation" href="index.html" />
+    <link rel="next" title="4. Lists" href="api-lists.html" />
+    <link rel="prev" title="2. Base" href="api-base.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="api-lists.html" title="4. Lists"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api-base.html" title="2. Base"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">NUI-API 3.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="forms">
+<h1>3. Forms<a class="headerlink" href="#forms" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="databinding">
+<h2>3.1. DataBinding<a class="headerlink" href="#databinding" title="Permalink to this headline">¶</a></h2>
+<p><p>数据绑定。用于表格与表单的选择、数据变更同步。</p>
+</p>
+
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:#006400">//绑定表单
+</span><span style="color:blue">var </span>db = <span style="color:blue">new </span>nui.DataBinding();
+db.bindForm(<span style="color:maroon">"editForm1"</span>, grid);
+
+<span style="color:#006400">//绑定控件
+</span>db.bindField(textbox, grid, <span style="color:maroon">"username"</span>);
+</pre>
+
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>bindForm（form, grid）</p>
+</td>
+<td></td>
+<td><p>绑定表格与表单</p>
+</td>
+<td><p>Object</p>
+</td>
+</tr>
+<tr>
+<td><p>bindField（control, grid, field ）</p>
+</td>
+<td></td>
+<td><p>绑定表格与单个控件</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+</table></div>
+<div class="section" id="form">
+<h2>3.2. Form<a class="headerlink" href="#form" title="Permalink to this headline">¶</a></h2>
+<p><p>能批量对多个控件进行赋值、取值、重置、验证、获取错误信息等。
+节省大量针对单独控件的操作代码。
+加载表单：1）使用ajax获取数据；2）将数据一次性设置给多个控件：form.setData(obj);
+保存表单：1）获取多个控件数据：var obj =
+form.getData()；2）使用ajax提交到服务端保存。</p>
+</p>
+
+<h4><p>Usage</p>
+</h4>
+<p><p>提交表单数据：</p>
+</p>
+<pre class="code"><span style="color:blue">var </span>form = <span style="color:blue">new </span>nui.Form(<span style="color:maroon">"#form1"</span>);
+<span style="color:blue">var </span>data = {forms:form.getData()};      <span style="color:#006400">//获取表单多个控件的数据
+</span><span style="color:blue">var </span>json = nui.encode(data);   <span style="color:#006400">//序列化成JSON
+</span>nui.ajax({
+    url: <span style="color:maroon">"org.gocom.components.nui.demo.TForm.saveForm.biz.ext"</span>,
+    type: <span style="color:maroon">"post"</span>,
+    data: json ,
+    contentType: <span style="color:maroon">"text/json"</span>,
+    success: <span style="color:blue">function </span>(text) {
+        alert(<span style="color:maroon">"提交成功，返回结果:" </span>+ nui.decode(text.returnForms));
+    }
+});
+</pre><p><p>加载表单数据：</p>
+</p>
+<pre class="code"><span style="color:blue">var </span>form = <span style="color:blue">new </span>nui.Form(<span style="color:maroon">"#form1"</span>);
+nui.ajax({
+    url: <span style="color:maroon">"org.gocom.components.nui.demo.TForm.loadForm.biz.ext"</span>,
+    type: <span style="color:maroon">"post"</span>,
+    success: <span style="color:blue">function </span>(text) {
+        <span style="color:blue">var </span>data = nui.decode(text);   <span style="color:#006400">//反序列化成对象
+        </span>form.setData(data);             <span style="color:#006400">//设置多个控件数据
+    </span>}
+});
+</pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-form.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>getData（formatter, deep）</p>
+</td>
+<td><p>formatter：Boolean。默认false。设置true，获取的日期格式是&#8221;2010-11-12&#8221;字符串。
+deep：Boolean。默认true，数据为{user:{name:&#8221;111&#8221;}}；设置false，数据为{&#8220;user.name&#8221;:
+&#8220;111&#8221;}。</p>
+</td>
+<td><p>获取表单数据</p>
+</td>
+<td><p>Object</p>
+</td>
+</tr>
+<tr>
+<td><p>setData（Object）</p>
+</td>
+<td></td>
+<td><p>设置表单数据</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>reset（）</p>
+</td>
+<td></td>
+<td><p>重置表单</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>clear（）</p>
+</td>
+<td></td>
+<td><p>清空表单</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>reset（）</p>
+</td>
+<td></td>
+<td><p>重置表单</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>validate（）</p>
+</td>
+<td></td>
+<td><p>验证表单</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>isValid（）</p>
+</td>
+<td></td>
+<td><p>表单是否验证通过</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setIsValid（Boolean）</p>
+</td>
+<td></td>
+<td><p>设置数据验证结果</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getErrorTexts（）</p>
+</td>
+<td></td>
+<td><p>获取错误文本数组</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getErrors（）</p>
+</td>
+<td></td>
+<td><p>获取验证错误的控件数组</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>loading（）</p>
+</td>
+<td></td>
+<td><p>加载遮罩表单区域</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>unmask（）</p>
+</td>
+<td></td>
+<td><p>取消遮罩</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setChanged（Boolean）</p>
+</td>
+<td></td>
+<td><p>设置是否变动</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>isChanged（）</p>
+</td>
+<td></td>
+<td><p>判断是否变动</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setEnabled（Boolean）</p>
+</td>
+<td></td>
+<td><p>设置是否禁用只读</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getFields（）</p>
+</td>
+<td></td>
+<td><p>获取表单组件数组</p>
+</td>
+<td><p>Array</p>
+</td>
+</tr>
+
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+</table></div>
+<div class="section" id="tooltip">
+<h2>3.3. ToolTip<a class="headerlink" href="#tooltip" title="Permalink to this headline">¶</a></h2>
+<p><p>提示框控件。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Usage</p>
+</h4>
+
+
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th>
+  <th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th>
+</tr>
+<tr>
+<td><p>placement</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>提示框位置。left|top|right|bottom|topleft|topright|bottomleft|bottomright</p>
+</td>
+<td><p>bottom</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>selector</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>激发提示框的选择器。常用: &#8220;[data-tooltip], [title]&#8221;</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setContent（String）</p>
+</td>
+<td></td>
+<td><p>设置提示框内容。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>showLoading（）</p>
+</td>
+<td></td>
+<td><p>显示loading图标。</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>beforeopen</p>
+</td>
+<td>
+<pre>
+{
+    sender: Object,
+    element: Element, //当前显示提示框的元素
+    content: String,  //当前要显示的内容
+    cancel: Boolean   //是否取消显示
+}
+</pre>
+</td>
+<td><p>提示框显示前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>open</p>
+</td>
+<pre>
+{
+    sender: Object,
+    element: Element //当前显示提示框的元素
+}
+</pre>
+</td>
+<td><p>提示框显示时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>close</p>
+</td>
+<td></td>
+<td><p>提示框隐藏时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="autocomplete">
+<h2>3.4. AutoComplete<a class="headerlink" href="#autocomplete" title="Permalink to this headline">¶</a></h2>
+<p><p>下拉列表输入框。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Combobox</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">input </span><span style="color:red">class</span><span style="color:blue">="nui-combobox" </span><span style="color:red">style</span><span style="color:blue">="</span><span style="color:red">width</span><span style="color:blue">:150px;" </span><span style="color:red">textField</span><span style="color:blue">="text" </span><span style="color:red">valueField</span><span style="color:blue">="id"
+    </span><span style="color:red">url</span><span style="color:blue">="../data/countrys.txt" </span><span style="color:red">dataField</span><span style="color:blue">="countrys" </span><span style="color:red">value</span><span style="color:blue">="cn" </span><span style="color:red">showNullItem</span><span style="color:blue">="true" </span><span style="color:red">allowInput</span><span style="color:blue">="true"/&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-autocomplete.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>valueField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值字段</p>
+</td>
+<td><p>id</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>textField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>文本显示字段</p>
+</td>
+<td><p>text</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>searchField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>查询字段</p>
+</td>
+<td><p>&#8220;key&#8221;</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>url</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据加载地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>columns</p>
+</td>
+<td><p>Array</p>
+</td>
+<td><p>下拉列表列集合。参考Columns</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>enterQuery</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否按回车才激发下拉数据查询</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getFormValue（）</p>
+</td>
+<td></td>
+<td><p>获取表单值</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+<tr>
+<td><p>doQuery（）</p>
+</td>
+<td></td>
+<td><p>弹出下拉选择框，并自动检索填充数据。</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table>
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="textboxlist">
+<h2>3.5. TextBoxList<a class="headerlink" href="#textboxlist" title="Permalink to this headline">¶</a></h2>
+<p><p>多选输入框。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-textboxlist.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+
+<tr>
+<td><p>url</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据获取地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>text</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>文本</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>valueField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值字段</p>
+</td>
+<td><p>id</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>textField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>文本字段</p>
+</td>
+<td><p>text</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>searchField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>查询字段</p>
+</td>
+<td><p>&#8220;key&#8221;</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowInput</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许文本输入</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>dataField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据列表字段</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>required</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>不允许为空</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>errorMode</p>
+</td>
+<td><p>String：icon、border、none</p>
+</td>
+<td><p>错误提示方式</p>
+</td>
+<td><p>icon</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>validateOnChanged</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>值改变时验证</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setUrl（value）</p>
+</td>
+<td></td>
+<td><p>设置数据获取地址</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setText（value）</p>
+</td>
+<td></td>
+<td><p>设置文本，比如：&#8221;中国,美国,加拿大&#8221;。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值，比如：&#8221;cn,usa,ca&#8221;。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getFormValue（）</p>
+</td>
+<td></td>
+<td><p>获取表单值</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+<tr>
+<td><p>validate（）</p>
+</td>
+<td></td>
+<td><p>验证控件值</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>isValid（）</p>
+</td>
+<td></td>
+<td><p>是否通过验证</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>setIsValid（Boolean）</p>
+</td>
+<td></td>
+<td><p>设置验证结果</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>validation</p>
+</td>
+<td></td>
+<td><p>验证时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="button">
+<h2>3.6. Button<a class="headerlink" href="#button" title="Permalink to this headline">¶</a></h2>
+<p><p>按钮。能设置文本、图标、下拉菜单等。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Usage</p>
+</h4>
+    <pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">a </span><span style="color:red">class</span><span style="color:blue">="nui-button" </span><span style="color:red">iconCls</span><span style="color:blue">="icon-edit" </span><span style="color:red">onclick</span><span style="color:blue">="onClick"&gt;</span>Edit<span style="color:blue">&lt;/</span><span style="color:maroon">a</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-button.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th>
+  <th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th>
+</tr>
+<tr>
+<td><p>text</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>按钮文本</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>iconCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>按钮图标类</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>iconStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>按钮图标样式</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>iconPosition</p>
+</td>
+<td><p>left/top</p>
+</td>
+<td><p>图标位置</p>
+</td>
+<td><p>left</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>href</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>超链接地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>target</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>超链接弹出方式。&#8221;</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>plain</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>背景透明</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>checked</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否选中</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>checkOnClick</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>点击时是否自动选中</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+   <tr>
+<td><p>groupName</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>菜单项组名称。设置后，会单选菜单项组。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>doClick（）</p>
+</td>
+<td></td>
+<td><p>主动激发click事件</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>click</p>
+</td>
+<td></td>
+<td><p>按钮点击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>checkedchanged</p>
+</td>
+<td></td>
+<td><p>按钮选择变化时发生</p>
+</td>
+</tr>
+</table><hr />
+
+<h3><p>nui.MenuButton</p>
+</h3>
+<p><p>菜单按钮。</p>
+</p>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>menu</p>
+</td>
+<td><p>Menu</p>
+</td>
+<td><p>菜单对象</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table><hr />
+
+<h3><p>nui.SplitButton</p>
+</h3>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+</table></div>
+<div class="section" id="checkbox">
+<h2>3.7. CheckBox<a class="headerlink" href="#checkbox" title="Permalink to this headline">¶</a></h2>
+<p><p>复选框控件。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>text</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>文本</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>checked</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否选中</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>Object</p>
+</td>
+<td><p>值</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>trueValue</p>
+</td>
+<td><p>Object</p>
+</td>
+<td><p>“真”值</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>falseValue</p>
+</td>
+<td><p>Object</p>
+</td>
+<td><p>“假”值</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getFormValue（）</p>
+</td>
+<td></td>
+<td><p>获取表单值</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>checkedchanged</p>
+</td>
+<td></td>
+<td><p>选中变化时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>click</p>
+</td>
+<td></td>
+<td><p>点击时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="listbox">
+<h2>3.8. ListBox<a class="headerlink" href="#listbox" title="Permalink to this headline">¶</a></h2>
+<p><p>列表控件。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">div </span><span style="color:red">id</span><span style="color:blue">="listbox1" </span><span style="color:red">class</span><span style="color:blue">="nui-listbox" </span><span style="color:red">style</span><span style="color:blue">="</span><span style="color:red">width</span><span style="color:blue">:150px;</span><span style="color:red">height</span><span style="color:blue">:100px;"
+    </span><span style="color:red">textField</span><span style="color:blue">="text" </span><span style="color:red">valueField</span><span style="color:blue">="id"
+    </span><span style="color:red">url</span><span style="color:blue">="../data/countrys.txt"&gt;
+&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><p><img alt="image0" src="_images/api-listbox.jpg" /> <img alt="image1" src="_images/api-listbox2.jpg" /></p>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>columns</p>
+</td>
+<td><p>Array</p>
+</td>
+<td><p>列对象集合</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>data</p>
+</td>
+<td><p>Array</p>
+</td>
+<td><p>数据对象</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>url</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据加载地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>valueField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值字段</p>
+</td>
+<td><p>id</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>textField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>文本字段</p>
+</td>
+<td><p>text</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>dataField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据列表字段</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showCheckBox</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示多选框</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showAllCheckBox</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示全选框</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>multiSelect</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>多选</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showNullItem</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示空项</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>nullItemText</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>空项文本</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getFormValue（）</p>
+</td>
+<td></td>
+<td><p>获取表单值</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+<tr>
+<td><p>load（url）</p>
+</td>
+<td></td>
+<td><p>加载数据</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>loadData（Array）</p>
+</td>
+<td></td>
+<td><p>加载数据</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getCount（）</p>
+</td>
+<td></td>
+<td><p>获取总项数</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getAt（Number）</p>
+</td>
+<td></td>
+<td><p>获取索引处对象</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>indexOf（Object）</p>
+</td>
+<td></td>
+<td><p>获取对象索引号</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>findItems（value）</p>
+</td>
+<td></td>
+<td><p>根据值获取项数组</p>
+</td>
+<td><p>Array</p>
+</td>
+</tr>
+<tr>
+<td><p>updateItem（Object, options）</p>
+</td>
+<td></td>
+<td><p>更新项</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>removeAll（）</p>
+</td>
+<td></td>
+<td><p>删除所有项</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>addItems（Array, Number）</p>
+</td>
+<td></td>
+<td><p>加入多个项</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>addItem（Object, Number）</p>
+</td>
+<td></td>
+<td><p>加入单个项</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>removeItems（Array）</p>
+</td>
+<td></td>
+<td><p>删除多个项</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>removeItem（Object）</p>
+</td>
+<td></td>
+<td><p>删除项</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>moveItem（Object, Number）</p>
+</td>
+<td></td>
+<td><p>移动项到新索引位置</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>isSelected（Object）</p>
+</td>
+<td></td>
+<td><p>是否选中项</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>isSelected（Object）</p>
+</td>
+<td></td>
+<td><p>是否选中项</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>getSelecteds（）</p>
+</td>
+<td></td>
+<td><p>获取选中项集合</p>
+</td>
+<td><p>Array</p>
+</td>
+</tr>
+<tr>
+<td><p>getSelected（）</p>
+</td>
+<td></td>
+<td><p>获取当前选中项</p>
+</td>
+<td><p>Object</p>
+</td>
+</tr>
+<tr>
+<td><p>select（Object）</p>
+</td>
+<td></td>
+<td><p>选中项</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>deselect（Object）</p>
+</td>
+<td></td>
+<td><p>取消选中项</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>selects（Array）</p>
+</td>
+<td></td>
+<td><p>选中多个项</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>deselects（Array）</p>
+</td>
+<td></td>
+<td><p>取消选中多个项</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>selectAll（）</p>
+</td>
+<td></td>
+<td><p>选中所有项</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>deselectAll（）</p>
+</td>
+<td></td>
+<td><p>取消选中所有项</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>clearSelect（）</p>
+</td>
+<td></td>
+<td><p>取消选中所有项</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>itemclick</p>
+</td>
+<td></td>
+<td><p>项点击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>itemdblclick</p>
+</td>
+<td></td>
+<td><p>项双击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforeload</p>
+</td>
+<td></td>
+<td><p>数据加载前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>preload</p>
+</td>
+<td></td>
+<td><p>数据加载，设置到Tree前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>loaderror</p>
+</td>
+<td></td>
+<td><p>数据加载错误时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>load</p>
+</td>
+<td></td>
+<td><p>数据加载成功时发生</p>
+</td>
+</tr>
+</table><hr />
+
+<h4 id="columns"><p>Columns</p>
+</h4>
+<p><p>列配置集合：columns，是一个数组，如：[column, column,
+...]。其中一个column的配置参数如下表：</p>
+</p>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+
+<tr>
+<td><p>header</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>表头列文本</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>field</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>单元格值字段</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>name</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>列标识名称</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>width</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>列宽度</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>headerAlign</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>表头列文本位置。left/center/right。</p>
+</td>
+<td><p>left</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>align</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>单元格文本位置。left/center/right。</p>
+</td>
+<td><p>left</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>headerCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>表头列样式类。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>cellCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>单元格样式类</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>headerStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>表头列样式</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>cellStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>单元格样式</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>renderer</p>
+</td>
+<td><p>Function</p>
+</td>
+<td><p>单元格绘制处理函数，同drawcell事件。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="checkboxlist">
+<h2>3.9. CheckBoxList<a class="headerlink" href="#checkboxlist" title="Permalink to this headline">¶</a></h2>
+<p><p>复选框组。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">div </span><span style="color:red">id</span><span style="color:blue">="cbl1" </span><span style="color:red">class</span><span style="color:blue">="nui-checkboxlist" </span><span style="color:red">repeatItems</span><span style="color:blue">="2" </span><span style="color:red">repeatLayout</span><span style="color:blue">="table"
+    </span><span style="color:red">textField</span><span style="color:blue">="text" </span><span style="color:red">valueField</span><span style="color:blue">="id" </span><span style="color:red">value</span><span style="color:blue">="cn,usa" </span><span style="color:red">onload</span><span style="color:blue">="onLoad"
+    </span><span style="color:red">url</span><span style="color:blue">="../data/countrys.txt" &gt;
+&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-checkboxlist.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>multiSelect</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>多选</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>repeatLayout</p>
+</td>
+<td><p>String：none,flow,table</p>
+</td>
+<td><p>布局方式</p>
+</td>
+<td><p>none</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>repeatDirection</p>
+</td>
+<td><p>String：vertical, horizontal</p>
+</td>
+<td><p>平铺方向</p>
+</td>
+<td><p>horizontal</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>repeatItems</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>平铺显示项</p>
+</td>
+<td><p>0</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="radiobuttonlist">
+<h2>3.10. RadioButtonList<a class="headerlink" href="#radiobuttonlist" title="Permalink to this headline">¶</a></h2>
+<p><p>单选框组。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.RadioButtonList</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">div </span><span style="color:red">class</span><span style="color:blue">="nui-radiobuttonlist" </span><span style="color:red">repeatItems</span><span style="color:blue">="2" </span><span style="color:red">repeatLayout</span><span style="color:blue">="table" </span><span style="color:red">repeatDirection</span><span style="color:blue">="vertical"
+    </span><span style="color:red">textField</span><span style="color:blue">="text" </span><span style="color:red">valueField</span><span style="color:blue">="id" </span><span style="color:red">value</span><span style="color:blue">="cn"
+    </span><span style="color:red">url</span><span style="color:blue">="../data/countrys.txt" &gt;
+&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-radiobuttonlist.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="calendar">
+<h2>3.11. Calendar<a class="headerlink" href="#calendar" title="Permalink to this headline">¶</a></h2>
+<p><p>日期选择器。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">div </span><span style="color:red">id</span><span style="color:blue">="calendar1" </span><span style="color:red">class</span><span style="color:blue">="nui-calendar" </span><span style="color:red">value</span><span style="color:blue">="2011-12-11" &gt;&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-calendar.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>columns</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>列个数</p>
+</td>
+<td><p>1</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>rows</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>行个数</p>
+</td>
+<td><p>1</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>viewDate</p>
+</td>
+<td><p>Date</p>
+</td>
+<td><p>默认显示日期</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showTime</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示时间输入框</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>timeFormat</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>时间格式化字符串</p>
+</td>
+<td><p>H:mm</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showHeader</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示头部</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showFooter</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示底部</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showWeekNumber</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示周数字</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showDaysHeader</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示周头部</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showMonthButtons</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示月导航按钮</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showYearButtons</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示年导航按钮</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showTodayButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示“今天”按钮</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showClearButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示清除日期按钮</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getFormValue（）</p>
+</td>
+<td></td>
+<td><p>获取表单值</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>datechanged</p>
+</td>
+<td></td>
+<td><p>日期改变时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>timechanged</p>
+</td>
+<td></td>
+<td><p>时间改变时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>dateclick</p>
+</td>
+<td></td>
+<td><p>日期点击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>drawdate</p>
+</td>
+<td>
+<pre>
+{
+    sender: Object,
+    date: Date,
+    dateCls: String,
+    dateStyle: String,
+    dateHtml: String,
+    allowSelect: Boolean
+}
+</pre>
+</td>
+<td><p>日期绘制时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="buttonedit">
+<h2>3.12. ButtonEdit<a class="headerlink" href="#buttonedit" title="Permalink to this headline">¶</a></h2>
+<p><p>按钮输入框。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">input </span><span style="color:red">id</span><span style="color:blue">="btnEdit1" </span><span style="color:red">class</span><span style="color:blue">="nui-buttonedit" </span><span style="color:red">onbuttonclick</span><span style="color:blue">="onButtonEdit"/&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-buttonedit.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>text</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>文本</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>Object</p>
+</td>
+<td><p>值</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>textName</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>文本字段名称</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>selectOnFocus</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>获取焦点时选中文本</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>maxLength</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>最大文本字符数</p>
+</td>
+<td><p>1000</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>minLength</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>最小文本字符数</p>
+</td>
+<td><p>0</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowInput</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许文本输入</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>required</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>不允许为空</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>errorMode</p>
+</td>
+<td><p>String：icon、border、none</p>
+</td>
+<td><p>错误提示方式</p>
+</td>
+<td><p>icon</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>validateOnChanged</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>值改变时验证</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示弹出按钮</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showClose</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示关闭按钮</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>indentSpace</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示占位空白</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>labelField</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示label</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>label</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>label文本</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>labelStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>label样式</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>doValueChanged（）</p>
+</td>
+<td></td>
+<td><p>主动激发valuechanged事件。一般在设置值之后调用。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getFormValue（）</p>
+</td>
+<td></td>
+<td><p>获取表单值</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+<tr>
+<td><p>validate（）</p>
+</td>
+<td></td>
+<td><p>验证控件值</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>isValid（）</p>
+</td>
+<td></td>
+<td><p>是否通过验证</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>setIsValid（Boolean）</p>
+</td>
+<td></td>
+<td><p>设置验证结果</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>buttonclick</p>
+</td>
+<td></td>
+<td><p>按钮点击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>validation</p>
+</td>
+<td></td>
+<td><p>验证时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>enter</p>
+</td>
+<td></td>
+<td><p>回车时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>keydown</p>
+</td>
+<td></td>
+<td><p>键盘按下时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>keyup</p>
+</td>
+<td></td>
+<td><p>键盘按起时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>focus</p>
+</td>
+<td></td>
+<td><p>获取焦点时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>blur</p>
+</td>
+<td></td>
+<td><p>失去焦点时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>closeclick</p>
+</td>
+<td></td>
+<td><p>点击关闭按钮时激发</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="filteredit">
+<h2>3.13. FilterEdit<a class="headerlink" href="#filteredit" title="Permalink to this headline">¶</a></h2>
+<p><p>过滤输入框。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.ButtonEdit</p>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>filterValue</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>过滤条件值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>filterData</p>
+</td>
+<td><p>Array</p>
+</td>
+<td><p>过滤条件数组</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setFilterValue（value）</p>
+</td>
+<td></td>
+<td><p>设置过滤条件值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getFilterValue（）</p>
+</td>
+<td></td>
+<td><p>获取过滤条件值</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="popupedit">
+<h2>3.14. PopupEdit<a class="headerlink" href="#popupedit" title="Permalink to this headline">¶</a></h2>
+<p><p>下拉输入框基类。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.ButtonEdit</p>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>popupWidth</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>下拉框宽度。&#8221;100%&#8221;,&#8221;auto&#8221;,200</p>
+</td>
+<td><p>100%</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>popupHeight</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>下拉框高度。&#8221;&#8221;, 50</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>popup</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>下拉框id。如&#8221;#gridPanel&#8221;</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+
+</tr>
+<tr>
+<td><p>beforeshowpopup</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object,
+  cancel: false
+}
+</pre>
+</td>
+<td><p>下拉框弹出前发生</p>
+</td>
+
+</tr>
+<tr>
+<td><p>showpopup</p>
+</td>
+<td></td>
+<td><p>下拉框弹出时发生</p>
+</td>
+
+</tr>
+<tr>
+<td><p>hidepopup</p>
+</td>
+<td></td>
+<td><p>下拉框隐藏时发生</p>
+</td>
+
+</tr>
+</table></div>
+<div class="section" id="textbox">
+<h2>3.15. TextBox<a class="headerlink" href="#textbox" title="Permalink to this headline">¶</a></h2>
+<p><p>文本输入框。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+
+<tr>
+<td><p>emptyText</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>文本为空时的提示内容</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowInput</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>允许文本输入</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>selectOnFocus</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>获取焦点时选中文本</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>maxLength</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>最大字符串</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>inputStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>输入框样式。比如：inputStyle=&#8221;text-align:right;&#8221;</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>errorMode</p>
+</td>
+<td><p>String：icon、border、none</p>
+</td>
+<td><p>错误提示方式</p>
+</td>
+<td><p>icon</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>validateOnChanged</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>值改变时验证</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>validateOnLeave</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>失去焦点时验证</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>indentSpace</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示占位空白</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>required</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>不允许为空</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>labelField</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示label</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>label</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>label文本</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>labelStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>label样式</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>requiredErrorText</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>不能为空</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>vtype</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>验证规则。如vtype=&#8221;email&#8221;。参考示例。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>emailErrorText</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>请输入邮件格式</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>urlErrorText</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>请输入URL格式</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>floatErrorText</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>请输入数字</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>intErrorText</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>请输入整数</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>dateErrorText</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>请输入日期格式 {0}</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>maxLengthErrorText</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>不能超过 {0} 个字符</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>minLengthErrorText</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>不能少于 {0} 个字符</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>maxErrorText</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>数字不能大于 {0}</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>minErrorText</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>数字不能小于 {0}</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>rangeLengthErrorText</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>字符数必须在 {0} 到 {1} 之间</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>rangeErrorText</p>
+</td>
+<td><p>String</p>
+</td>
+<td></td>
+<td><p>数字必须在 {0} 到 {1} 之间</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>doValueChanged（）</p>
+</td>
+<td></td>
+<td><p>主动激发valuechanged事件。一般在设置值之后调用。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getFormValue（）</p>
+</td>
+<td></td>
+<td><p>获取表单值</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+<tr>
+<td><p>validate（）</p>
+</td>
+<td></td>
+<td><p>验证控件值</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>isValid（）</p>
+</td>
+<td></td>
+<td><p>是否通过验证</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+<tr>
+<td><p>setIsValid（Boolean）</p>
+</td>
+<td></td>
+<td><p>设置验证结果</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>validation</p>
+</td>
+<td></td>
+<td><p>验证时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>enter</p>
+</td>
+<td></td>
+<td><p>回车时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>keydown</p>
+</td>
+<td></td>
+<td><p>键盘按下时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>keyup</p>
+</td>
+<td></td>
+<td><p>键盘按起时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>focus</p>
+</td>
+<td></td>
+<td><p>获取焦点时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>blur</p>
+</td>
+<td></td>
+<td><p>失去焦点时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="password">
+<h2>3.16. Password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h2>
+<p><p>密码输入框。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.TextBox</p>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table>
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="textarea">
+<h2>3.17. TextArea<a class="headerlink" href="#textarea" title="Permalink to this headline">¶</a></h2>
+<p><p>多行文本输入框。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.TextBox</p>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="combobox">
+<h2>3.18. ComboBox<a class="headerlink" href="#combobox" title="Permalink to this headline">¶</a></h2>
+<p><p>下拉列表输入框。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.PopupEdit</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">input </span><span style="color:red">class</span><span style="color:blue">="nui-combobox" </span><span style="color:red">style</span><span style="color:blue">="</span><span style="color:red">width</span><span style="color:blue">:150px;" </span><span style="color:red">textField</span><span style="color:blue">="text" </span><span style="color:red">valueField</span><span style="color:blue">="id"
+    </span><span style="color:red">url</span><span style="color:blue">="../data/countrys.txt" </span><span style="color:red">value</span><span style="color:blue">="cn" </span><span style="color:red">showNullItem</span><span style="color:blue">="true" </span><span style="color:red">allowInput</span><span style="color:blue">="true"/&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-combobox.jpg" />
+</div>
+<p style="padding-left:15px;"><p>nui.ComboBox也支持下拉多列</p>
+<div class="figure">
+<img alt="" src="_images/api-combobox2.jpg" />
+</div>
+<h4 border="1px" bordercolor="#cccccc"  cellspacing="0"><p>Properties</p>
+</h4>
+<table>
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>valueField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值字段</p>
+</td>
+<td><p>id</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>textField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>文本显示字段</p>
+</td>
+<td><p>text</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>pinyinField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>拼音字段</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>dataField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据列表字段</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>multiSelect</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>多选</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>data</p>
+</td>
+<td><p>Array</p>
+</td>
+<td><p>数据对象</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>url</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据加载地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>columns</p>
+</td>
+<td><p>Array</p>
+</td>
+<td><p>下拉列表列集合。参考Columns</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showNullItem</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示空项</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>nullItemText</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>空项文本</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>valueFromSelect</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>必须从选择项录入</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getFormValue（）</p>
+</td>
+<td></td>
+<td><p>获取表单值</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+<tr>
+<td><p>load（url）</p>
+</td>
+<td></td>
+<td><p>加载数据</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>select（Number）</p>
+</td>
+<td></td>
+<td><p>选择项</p>
+</td>
+<td></td>
+</tr>
+
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>itemclick</p>
+</td>
+<td></td>
+<td><p>下拉项点击时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="datepicker">
+<h2>3.19. DatePicker<a class="headerlink" href="#datepicker" title="Permalink to this headline">¶</a></h2>
+<p><p>日期选择输入框。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.DatePicker</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">input </span><span style="color:red">id</span><span style="color:blue">="date1" </span><span style="color:red">class</span><span style="color:blue">="nui-datepicker" </span><span style="color:red">value</span><span style="color:blue">="2010-01-01" /&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-datepicker.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>Date</p>
+</td>
+<td><p>值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>format</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>格式化字符串</p>
+</td>
+<td><p>yyyy-MM-dd</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>timeFormat</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>时间格式化字符串</p>
+</td>
+<td><p>H:mm</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+   <tr>
+<td><p>viewDate</p>
+</td>
+<td><p>Date</p>
+</td>
+<td><p>下拉默认显示日期</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>minDate</p>
+</td>
+<td><p>Date</p>
+</td>
+<td><p>最小日期</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>maxDate</p>
+</td>
+<td><p>Date</p>
+</td>
+<td><p>最大日期</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showTime</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示&#8221;时间输入框&#8221;</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+ <tr>
+<td><p>showTodayButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示&#8221;今天&#8221;按钮</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+ <tr>
+<td><p>showOkButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示&#8221;确定&#8221;按钮</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+ <tr>
+<td><p>showClearButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示&#8221;清除&#8221;按钮</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getFormValue（）</p>
+</td>
+<td></td>
+<td><p>获取表单值</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="monthpicker">
+<h2>3.20. MonthPicker<a class="headerlink" href="#monthpicker" title="Permalink to this headline">¶</a></h2>
+<p><p>年月选择框。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.DatePicker</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">input </span><span style="color:red">id</span><span style="color:blue">="date1" </span><span style="color:red">class</span><span style="color:blue">="nui-monthpicker" </span><span style="color:red">value</span><span style="color:blue">="2010-01" /&gt;
+</span></pre>
+
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>Date</p>
+</td>
+<td><p>值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getFormValue（）</p>
+</td>
+<td></td>
+<td><p>获取表单值</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="spinner">
+<h2>3.21. Spinner<a class="headerlink" href="#spinner" title="Permalink to this headline">¶</a></h2>
+<p><p>数字输入框。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.ButtonEdit</p>
+<h4><p>Usage</p>
+</h4>
+    <pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">input </span><span style="color:red">id</span><span style="color:blue">="sp1" </span><span style="color:red">class</span><span style="color:blue">="nui-spinner"  </span><span style="color:red">minValue</span><span style="color:blue">="200" </span><span style="color:red">maxValue</span><span style="color:blue">="250" /&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-spinner.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>值</p>
+</td>
+<td><p>0</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>minValue</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>最小值</p>
+</td>
+<td><p>0</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>maxValue</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>最大值</p>
+</td>
+<td><p>100</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>increment</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>增量值</p>
+</td>
+<td><p>1</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>decimalPlaces</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>保留的小数点位数</p>
+</td>
+<td><p>0</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>format</p>
+</td>
+<td><p>String</p>
+</td>
+<td>
+<pre>
+数字格式化。如：
+    小数点和千分位：format="n"
+    货币格式：format="c"。
+    百分比格式：format="p"。
+    自定义格式：format="¥#,0.00"。
+</pre>
+</td>
+<td><p>0</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowLimitValue</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否强制约束大小范围</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>changeOnMousewheel</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否滚动滚轮改变值</p>
+</td>
+<td><p>0</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="timespinner">
+<h2>3.22. TimeSpinner<a class="headerlink" href="#timespinner" title="Permalink to this headline">¶</a></h2>
+<p><p>时间输入框。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.ButtonEdit</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">input </span><span style="color:red">id</span><span style="color:blue">="tsp1" </span><span style="color:red">class</span><span style="color:blue">="nui-timespinner"  </span><span style="color:red">format</span><span style="color:blue">="H:mm" /&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-timespinner.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>Date</p>
+</td>
+<td><p>值</p>
+</td>
+<td><p>null</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>format</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>格式化字符串</p>
+</td>
+<td><p>H:mm:ss</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getFormValue（）</p>
+</td>
+<td></td>
+<td><p>获取表单值</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+<tr>
+<td><p>getFormattedValue（）</p>
+</td>
+<td></td>
+<td><p>获取格式化后的值</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="treeselect">
+<h2>3.23. TreeSelect<a class="headerlink" href="#treeselect" title="Permalink to this headline">¶</a></h2>
+<p><p>树形下拉选择框。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.PopupEdit</p>
+<h4><p>Usage</p>
+</h4>
+    <pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">input </span><span style="color:red">class</span><span style="color:blue">="nui-treeselect" </span><span style="color:red">url</span><span style="color:blue">="../data/tree.txt" </span><span style="color:red">valueField</span><span style="color:blue">="id" </span><span style="color:red">textField</span><span style="color:blue">="text"/&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-treeselect.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>virtualScroll</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>虚拟模式。适用于大数据显示场合。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>data</p>
+</td>
+<td><p>Array</p>
+</td>
+<td><p>树形数据对象</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>url</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>数据加载地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>选中的节点值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>valueField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值字段。</p>
+</td>
+<td><p>id</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>parentField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>父节点字段</p>
+</td>
+<td><p>pid</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>resultAsTree</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>url数据是否列表</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>textField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>节点文本字段</p>
+</td>
+<td><p>text</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>pinyinField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>拼音字段</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>multiSelect</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>多选</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>checkRecursive</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否联动选择</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showTreeIcon</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示节点图标</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showTreeLines</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示树形线条</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showFolderCheckBox</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>显示父节点checkbox</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>autoCheckParent</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否自动选择父节点。比如选中子节点，将父节点也自动选中。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>expandOnLoad</p>
+</td>
+<td><p>Boolean/Number</p>
+</td>
+<td><p>加载后是否展开。比如：true展开所有节点；0展开第一级节点。以此类推。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>valueFromSelect</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>必须从选择项录入</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getFormValue（）</p>
+</td>
+<td></td>
+<td><p>获取表单值</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+<tr>
+<td><p>load（url）</p>
+</td>
+<td></td>
+<td><p>加载数据</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>loadList ( Array, idField, parentField )</p>
+</td>
+<td></td>
+<td><p>加载列表数据。比如：tree.loadList(list, &#8220;id&#8221;, &#8220;pid&#8221;)</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getData ( )</p>
+</td>
+<td></td>
+<td><p>获取树形数据</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getList（）</p>
+</td>
+<td></td>
+<td><p>获取列表数据</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getSelectedNode（）</p>
+</td>
+<td></td>
+<td><p>获取选中的节点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getCheckedNodes ( haveParent )</p>
+</td>
+<td><p>haveParent: Boolean。是否包含父节点。</p>
+</td>
+<td><p>获取Check选中的多个节点</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>nodeclick</p>
+</td>
+<td></td>
+<td><p>下拉项点击时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforenodecheck</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object,         //树对象
+  node: Object,           //节点对象
+  isLeaf: Boolean,
+  checked: Boolean,       //Check状态
+  cancel: false
+}
+</pre>
+</td>
+<td><p>Check选择前发生</p>
+</td>
+</tr>
+<tr>
+<td><p>beforenodeselect</p>
+</td>
+<td>
+<pre>
+{
+  sender: Object,         //树对象
+  node: Object,           //节点对象
+  isLeaf: Boolean,
+  cancel: false
+}
+</pre>
+</td>
+<td><p>选择节点前发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="lookup">
+<h2>3.24. Lookup<a class="headerlink" href="#lookup" title="Permalink to this headline">¶</a></h2>
+<p><p>下拉搜索选择框。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.PopupEdit</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color: blue">&lt;</span><span style="color: maroon">input </span><span style="color: red">id</span><span style="color: blue">="lookup2" </span><span style="color: red">class</span><span style="color: blue">="nui-lookup" </span><span style="color: red">style</span><span style="color: blue">="</span><span style="color: red">width</span><span style="color: blue">:200px;"
+    </span><span style="color: red">textField</span><span style="color: blue">="name" </span><span style="color: red">valueField</span><span style="color: blue">="id" </span><span style="color: red">popupWidth</span><span style="color: blue">="auto"
+    </span><span style="color: red">popup</span><span style="color: blue">="#gridPanel" </span><span style="color: red">grid</span><span style="color: blue">="#datagrid1"
+/&gt;
+
+&lt;</span><span style="color: maroon">div </span><span style="color: red">id</span><span style="color: blue">="gridPanel" </span><span style="color: red">class</span><span style="color: blue">="nui-panel" </span><span style="color: red">title</span><span style="color: blue">="header" </span><span style="color: red">iconCls</span><span style="color: blue">="icon-add" </span><span style="color: red">style</span><span style="color: blue">="</span><span style="color: red">width</span><span style="color: blue">:450px;</span><span style="color: red">height</span><span style="color: blue">:250px;"
+    </span><span style="color: red">showToolbar</span><span style="color: blue">="true" </span><span style="color: red">showCloseButton</span><span style="color: blue">="true" </span><span style="color: red">showHeader</span><span style="color: blue">="false" </span><span style="color: red">bodyStyle</span><span style="color: blue">="padding:0" </span><span style="color: red">borderStyle</span><span style="color: blue">="border:0"
+&gt;
+    &lt;</span><span style="color: maroon">div </span><span style="color: red">property</span><span style="color: blue">="toolbar" </span><span style="color: red">style</span><span style="color: blue">="</span><span style="color: red">padding</span><span style="color: blue">:5px;</span><span style="color: red">padding-left</span><span style="color: blue">:8px;</span><span style="color: red">text-align</span><span style="color: blue">:center;"&gt;
+        &lt;</span><span style="color: maroon">span</span><span style="color: blue">&gt;</span>姓名：<span style="color: blue">&lt;/</span><span style="color: maroon">span</span><span style="color: blue">&gt;
+        &lt;</span><span style="color: maroon">input </span><span style="color: red">id</span><span style="color: blue">="keyText" </span><span style="color: red">class</span><span style="color: blue">="nui-textbox" </span><span style="color: red">style</span><span style="color: blue">="</span><span style="color: red">width</span><span style="color: blue">:160px;" </span><span style="color: red">onenter</span><span style="color: blue">="onSearchClick"/&gt;
+        &lt;</span><span style="color: maroon">a </span><span style="color: red">class</span><span style="color: blue">="nui-button" </span><span style="color: red">onclick</span><span style="color: blue">="onSearchClick"&gt;</span>Search<span style="color: blue">&lt;/</span><span style="color: maroon">a</span><span style="color: blue">&gt;
+    &lt;/</span><span style="color: maroon">div</span><span style="color: blue">&gt;
+    &lt;</span><span style="color: maroon">div </span><span style="color: red">id</span><span style="color: blue">="datagrid1" </span><span style="color: red">class</span><span style="color: blue">="nui-datagrid" </span><span style="color: red">style</span><span style="color: blue">="</span><span style="color: red">width</span><span style="color: blue">:100%;</span><span style="color: red">height</span><span style="color: blue">:100%;"
+        </span><span style="color: red">borderStyle</span><span style="color: blue">="border:0" </span><span style="color: red">showPageSize</span><span style="color: blue">="false" </span><span style="color: red">showPageIndex</span><span style="color: blue">="false"
+        </span><span style="color: red">multiSelect</span><span style="color: blue">="true" </span><span style="color: red">url</span><span style="color: blue">="../data/AjaxService.jsp?method=SearchEmployees"
+    &gt;
+        &lt;</span><span style="color: maroon">div </span><span style="color: red">property</span><span style="color: blue">="columns"&gt;
+            &lt;</span><span style="color: maroon">div </span><span style="color: red">type</span><span style="color: blue">="checkcolumn" &gt;</span>#<span style="color: blue">&lt;/</span><span style="color: maroon">div</span><span style="color: blue">&gt;
+            &lt;</span><span style="color: maroon">div </span><span style="color: red">field</span><span style="color: blue">="loginname" </span><span style="color: red">width</span><span style="color: blue">="120" </span><span style="color: red">headerAlign</span><span style="color: blue">="center" </span><span style="color: red">allowSort</span><span style="color: blue">="true"&gt;</span>员工帐号<span style="color: blue">&lt;/</span><span style="color: maroon">div</span><span style="color: blue">&gt;
+            &lt;</span><span style="color: maroon">div </span><span style="color: red">field</span><span style="color: blue">="name" </span><span style="color: red">width</span><span style="color: blue">="120" </span><span style="color: red">headerAlign</span><span style="color: blue">="center" </span><span style="color: red">allowSort</span><span style="color: blue">="true"&gt;</span>姓名<span style="color: blue">&lt;/</span><span style="color: maroon">div</span><span style="color: blue">&gt;
+            &lt;</span><span style="color: maroon">div </span><span style="color: red">field</span><span style="color: blue">="createtime" </span><span style="color: red">width</span><span style="color: blue">="100" </span><span style="color: red">headerAlign</span><span style="color: blue">="center" </span><span style="color: red">dateFormat</span><span style="color: blue">="yyyy-MM-dd" </span><span style="color: red">allowSort</span><span style="color: blue">="true"&gt;</span>创建日期<span style="color: blue">&lt;/</span><span style="color: maroon">div</span><span style="color: blue">&gt;
+        &lt;/</span><span style="color: maroon">div</span><span style="color: blue">&gt;
+    &lt;/</span><span style="color: maroon">div</span><span style="color: blue">&gt;
+&lt;/</span><span style="color: maroon">div</span><span style="color: blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-lookup.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>valueField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值字段</p>
+</td>
+<td><p>id</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>textField</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>文本字段</p>
+</td>
+<td><p>text</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>grid</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>表格id。如&#8221;#datagrid1&#8221;</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>popup</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>下拉框id。如&#8221;#gridPanel&#8221;</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>deselectAll（）</p>
+</td>
+<td></td>
+<td><p>清除所有选中</p>
+</td>
+<td></td>
+</tr>
+
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>valuechanged</p>
+</td>
+<td></td>
+<td><p>值改变时发生</p>
+</td>
+
+</tr>
+
+</table></div>
+<div class="section" id="htmlfile">
+<h2>3.25. HtmlFile<a class="headerlink" href="#htmlfile" title="Permalink to this headline">¶</a></h2>
+<p><p>文件上传控件（html实现）。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.ButtonEdit</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">form </span><span style="color:red">id</span><span style="color:blue">="upload" </span><span style="color:red">action</span><span style="color:blue">="upload.jsp" </span><span style="color:red">method</span><span style="color:blue">="post" </span><span style="color:red">enctype</span><span style="color:blue">="multipart/form-data"&gt;
+    </span>图片：<span style="color:blue">&lt;</span><span style="color:maroon">input </span><span style="color:red">class</span><span style="color:blue">="nui-htmlfile" </span><span style="color:red">name</span><span style="color:blue">="Fdata" </span><span style="color:red">limitType</span><span style="color:blue">="*.txt" /&gt;
+    &lt;</span><span style="color:maroon">input </span><span style="color:red">type</span><span style="color:blue">="submit" </span><span style="color:red">value</span><span style="color:blue">="上传"/&gt;
+&lt;/</span><span style="color:maroon">form</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-fileupload.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>buttonText</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>按钮文本</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>limitType</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>文件限制类型。如&#8221;<em>.bmp;</em>.txt&#8221;</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>fileselect</p>
+</td>
+<td></td>
+<td><p>文件选择时激发</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="fileupload">
+<h2>3.26. FileUpload<a class="headerlink" href="#fileupload" title="Permalink to this headline">¶</a></h2>
+<p><p>文件上传控件（flash实现）。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.ButtonEdit</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">input </span><span style="color:red">id</span><span style="color:blue">="fileupload1" </span><span style="color:red">class</span><span style="color:blue">="nui-fileupload" </span><span style="color:red">name</span><span style="color:blue">="Fdata" </span><span style="color:red">limitType</span><span style="color:blue">="`*.txt`"
+    </span><span style="color:red">flashUrl</span><span style="color:blue">="swfupload/swfupload.swf"
+    </span><span style="color:red">uploadUrl</span><span style="color:blue">="upload.jsp"
+    </span><span style="color:red">onuploadsuccess</span><span style="color:blue">="onUploadSuccess"
+    /&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-fileupload.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>buttonText</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>按钮文本</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>limitType</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>文件限制类型。如&#8221;<em>.bmp;</em>.txt&#8221;</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>limitSize</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>文件尺寸限制。如&#8221;10MB&#8221;</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>uploadUrl</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>文件上传路径地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>flashUrl</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>Flash路径地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>uploadOnSelect</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>文件选择后即上传</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>startUpload（）</p>
+</td>
+<td></td>
+<td><p>上传文件</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setPostParam ( Object )</p>
+</td>
+<td></td>
+<td><p>设置post参数对象。如：fileupload.setPostParam({a:1, b: true});</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+
+<tr>
+<td><p>fileselect</p>
+</td>
+<td></td>
+<td><p>文件选择时激发</p>
+</td>
+</tr>
+<tr>
+<td><p>uploadsuccess</p>
+</td>
+<td></td>
+<td><p>上传成功</p>
+</td>
+</tr>
+<tr>
+<td><p>uploaderror</p>
+</td>
+<td>
+<pre>
+{
+    sender: Object,
+    file: Object,
+    code: String,
+    message: String
+}
+</pre>
+</td>
+<td><p>上传失败</p>
+</td>
+</tr>
+<tr>
+<td><p>uploadcomplete</p>
+</td>
+<td></td>
+<td><p>上传完成</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="hidden">
+<h2>3.27. Hidden<a class="headerlink" href="#hidden" title="Permalink to this headline">¶</a></h2>
+<p><p>隐藏字段。</p>
+</p>
+
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>value</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>值</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue（value）</p>
+</td>
+<td></td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue（）</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td></td>
+</tr>
+
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+</table></div>
+<div class="section" id="richtext">
+<h2>3.28. RichText<a class="headerlink" href="#richtext" title="Permalink to this headline">¶</a></h2>
+<p><p>富文本编辑框。</p>
+</p>
+
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default?</p>
+</th><th><p>Set?</p>
+</th><th><p>Get?</p>
+</th></tr>
+<tr>
+<td><p>width</p>
+</td>
+<td></td>
+<td><p>宽度</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>height</p>
+</td>
+<td></td>
+<td><p>高度</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setValue(value)</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>设置值</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getValue()</p>
+</td>
+<td></td>
+<td><p>获取值</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+<tr>
+<td><p>setSubmitData</p>
+</td>
+<td></td>
+<td><p>设置文本框提交数据</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getSubmitData()</p>
+</td>
+<td></td>
+<td><p>获取文本框提交数据</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+<tr>
+<td><p>setReadOnly()</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>设置文本框为只读属性</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getReadOnly()</p>
+</td>
+<td></td>
+<td><p>获取文本框为只读属性</p>
+</td>
+<td><p>Boolean</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="dict">
+<h2>3.29. Dict<a class="headerlink" href="#dict" title="Permalink to this headline">¶</a></h2>
+<p><p>业务字典，仅在eos平台下。有三种形式，分别为单选框&#8221;mini-dictradiogroup&#8221;，复选框&#8221;mini-dictcheckboxgroup&#8221;和下拉框&#8221;mini-dictcombobox&#8221;。</p>
+</p>
+
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default?</p>
+</th><th><p>Set?</p>
+</th><th><p>Get?</p>
+</th></tr>
+<tr>
+<td><p>dictTypeId</p>
+</td>
+<td></td>
+<td><p>业务字典id</p>
+</td>
+<td style="text-align:center;"></td><td style="text-align:center;"></td><td style="text-align:center;"></td>
+</tr>
+<tr>
+<td><p>textField</p>
+</td>
+<td></td>
+<td><p>业务字典字段名称</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"></td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>valueField</p>
+</td>
+<td></td>
+<td><p>值</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"></td><td style="text-align:center;"></td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>getDictText(dictTypeId,dictKey)</p>
+</td>
+<td></td>
+<td><p>设置业务字典值</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+</table></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3. Forms</a><ul>
+<li><a class="reference internal" href="#databinding">3.1. DataBinding</a></li>
+<li><a class="reference internal" href="#form">3.2. Form</a></li>
+<li><a class="reference internal" href="#tooltip">3.3. ToolTip</a></li>
+<li><a class="reference internal" href="#autocomplete">3.4. AutoComplete</a></li>
+<li><a class="reference internal" href="#textboxlist">3.5. TextBoxList</a></li>
+<li><a class="reference internal" href="#button">3.6. Button</a></li>
+<li><a class="reference internal" href="#checkbox">3.7. CheckBox</a></li>
+<li><a class="reference internal" href="#listbox">3.8. ListBox</a></li>
+<li><a class="reference internal" href="#checkboxlist">3.9. CheckBoxList</a></li>
+<li><a class="reference internal" href="#radiobuttonlist">3.10. RadioButtonList</a></li>
+<li><a class="reference internal" href="#calendar">3.11. Calendar</a></li>
+<li><a class="reference internal" href="#buttonedit">3.12. ButtonEdit</a></li>
+<li><a class="reference internal" href="#filteredit">3.13. FilterEdit</a></li>
+<li><a class="reference internal" href="#popupedit">3.14. PopupEdit</a></li>
+<li><a class="reference internal" href="#textbox">3.15. TextBox</a></li>
+<li><a class="reference internal" href="#password">3.16. Password</a></li>
+<li><a class="reference internal" href="#textarea">3.17. TextArea</a></li>
+<li><a class="reference internal" href="#combobox">3.18. ComboBox</a></li>
+<li><a class="reference internal" href="#datepicker">3.19. DatePicker</a></li>
+<li><a class="reference internal" href="#monthpicker">3.20. MonthPicker</a></li>
+<li><a class="reference internal" href="#spinner">3.21. Spinner</a></li>
+<li><a class="reference internal" href="#timespinner">3.22. TimeSpinner</a></li>
+<li><a class="reference internal" href="#treeselect">3.23. TreeSelect</a></li>
+<li><a class="reference internal" href="#lookup">3.24. Lookup</a></li>
+<li><a class="reference internal" href="#htmlfile">3.25. HtmlFile</a></li>
+<li><a class="reference internal" href="#fileupload">3.26. FileUpload</a></li>
+<li><a class="reference internal" href="#hidden">3.27. Hidden</a></li>
+<li><a class="reference internal" href="#richtext">3.28. RichText</a></li>
+<li><a class="reference internal" href="#dict">3.29. Dict</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api-base.html"
+                        title="previous chapter">2. Base</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api-lists.html"
+                        title="next chapter">4. Lists</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api-forms.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="api-lists.html" title="4. Lists"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api-base.html" title="2. Base"
+             >previous</a> |</li>
+        <li><a href="index.html">NUI-API 3.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, primeton.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>

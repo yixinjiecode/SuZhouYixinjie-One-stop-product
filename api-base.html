@@ -1,0 +1,912 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. Base &mdash; NUI-API 3.3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="NUI-API 3.3.0 documentation" href="index.html" />
+    <link rel="next" title="3. Forms" href="api-forms.html" />
+    <link rel="prev" title="1. Overview" href="api-overview.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="api-forms.html" title="3. Forms"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api-overview.html" title="1. Overview"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">NUI-API 3.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="base">
+<h1>2. Base<a class="headerlink" href="#base" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ajax">
+<h2>2.1. Ajax<a class="headerlink" href="#ajax" title="Permalink to this headline">¶</a></h2>
+<p><p>jQuery 拥有完整的 Ajax
+兼容套件。其中的函数和方法允许我们在不刷新浏览器的情况下从服务器加载数据。</p>
+</p>
+<p><p>详细jQuery Ajax教程，可参考这里。</p>
+</p>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>jQuery.ajax()</p>
+</td>
+<td><p>执行异步 HTTP (Ajax) 请求。</p>
+</td>
+</tr>
+<tr>
+<td><p>.ajaxComplete()</p>
+</td>
+<td><p>当 Ajax 请求完成时注册要调用的处理程序。这是一个 Ajax 事件。</p>
+</td>
+</tr>
+<tr>
+<td><p>._ajaxerror()</p>
+</td>
+<td><p>当 Ajax 请求完成且出现错误时注册要调用的处理程序。这是一个 Ajax 事件。</p>
+</td>
+</tr>
+<tr>
+<td><p>.ajaxSend()</p>
+</td>
+<td><p>在 Ajax 请求发送之前显示一条消息。</p>
+</td>
+</tr>
+<tr>
+<td><p>jQuery.ajaxSetup()</p>
+</td>
+<td><p>设置将来的 Ajax 请求的默认值。</p>
+</td>
+</tr>
+<tr>
+<td><p>.ajaxStart()</p>
+</td>
+<td><p>当首个 Ajax 请求完成开始时注册要调用的处理程序。这是一个 Ajax 事件。</p>
+</td>
+</tr>
+<tr>
+<td><p>.ajaxStop()</p>
+</td>
+<td><p>当所有 Ajax 请求完成时注册要调用的处理程序。这是一个 Ajax 事件。</p>
+</td>
+</tr>
+<tr>
+<td><p>.ajaxSuccess()</p>
+</td>
+<td><p>当 Ajax 请求成功完成时显示一条消息。</p>
+</td>
+</tr>
+<tr>
+<td><p>jQuery.get()</p>
+</td>
+<td><p>使用 HTTP GET 请求从服务器加载数据。</p>
+</td>
+</tr>
+<tr>
+<td><p>jQuery.getJSON()</p>
+</td>
+<td><p>使用 HTTP GET 请求从服务器加载 JSON 编码数据。</p>
+</td>
+</tr>
+<tr>
+<td><p>jQuery.getScript()</p>
+</td>
+<td><p>使用 HTTP GET 请求从服务器加载 JavaScript 文件，然后执行该文件。</p>
+</td>
+</tr>
+<tr>
+<td><p>.load()</p>
+</td>
+<td><p>从服务器加载数据，然后把返回到 HTML 放入匹配元素。</p>
+</td>
+</tr>
+<tr>
+<td><p>jQuery.param()</p>
+</td>
+<td><p>创建数组或对象的序列化表示，适合在 URL 查询字符串或 Ajax 请求中使用。</p>
+</td>
+</tr>
+<tr>
+<td><p>jQuery.post()</p>
+</td>
+<td><p>使用 HTTP POST 请求从服务器加载数据。</p>
+</td>
+</tr>
+<tr>
+<td><p>.serialize()</p>
+</td>
+<td><p>将表单内容序列化为字符串。</p>
+</td>
+</tr>
+<tr>
+<td><p>.serializeArray()</p>
+</td>
+<td><p>序列化表单元素，返回 JSON 数据结构数据。</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="json">
+<h2>2.2. JSON<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
+<p><p>JSON组件。可序列化、反序列化JS对象。</p>
+</p>
+
+<div style="color:red"><p>Methods</p>
+</div>
+
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>nui.encode ( Object )</p>
+</td>
+<td></td>
+<td><p>把JS对象序列化为字符串</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+<tr>
+<td><p>nui.decode ( String )</p>
+</td>
+<td><p>{ &nbsp;&nbsp;&nbsp;json: String。json字符串。 &nbsp;&nbsp;&nbsp;autoParseDate:
+Boolean。是否自动解析日期字符串为Date类型。 }</p>
+</td>
+<td><p>把字符串反序列化为JS对象</p>
+</td>
+<td><p>Object</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="date">
+<h2>2.3. Date<a class="headerlink" href="#date" title="Permalink to this headline">¶</a></h2>
+<p>日期类型处理组件。可格式化、解析JS Date对象。</p>
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>nui.parseDate ( String )</p>
+</td>
+<td><p>String: 特定格式字符串。 支持如下：</p>
+<ul class="simple">
+<li>2010-11-22</li>
+<li>2010/11/22</li>
+<li>11-22-201</li>
+<li>11/22/2010</li>
+<li>2010-11-22T23:23:59</li>
+<li>2010/11/22T23:23:59</li>
+<li>2010-11-22 23:23:59</li>
+<li>2010/11/22 23:23:59</li>
+</ul>
+</td>
+<td><p>把字符串转换成Date类型对象。</p>
+</td>
+<td><p>Date</p>
+</td>
+</tr>
+<tr>
+<td><p>nui.formatDate ( Date, String )</p>
+</td>
+<td><p>Date: 日期类型对象。 String: 格式化字符串。例如：&#8221;yyyy-MM-dd HH:mm:ss&#8221;。
+具体格式说明，请参考下面的“Format”内容。</p>
+</td>
+<td><p>把Date类型转换为字符串</p>
+</td>
+<td><p>String</p>
+</td>
+</tr>
+
+</table>
+
+<h4><p>Format</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>d</p>
+</td>
+<td><p>月中的某一天。一位数的日期没有前导零。</p>
+</td>
+</tr>
+<tr>
+<td><p>dd</p>
+</td>
+<td><p>月中的某一天。一位数的日期有一个前导零。</p>
+</td>
+</tr>
+<tr>
+<td><p>ddd</p>
+</td>
+<td><p>周中某天的缩写名称</p>
+</td>
+</tr>
+<tr>
+<td><p>dddd</p>
+</td>
+<td><p>周中某天的完整名称</p>
+</td>
+</tr>
+<tr>
+<td><p>M</p>
+</td>
+<td><p>月份数字。一位数的月份没有前导零。</p>
+</td>
+</tr>
+<tr>
+<td><p>MM</p>
+</td>
+<td><p>月份数字。一位数的月份有一个前导零。</p>
+</td>
+</tr>
+<tr>
+<td><p>MMM</p>
+</td>
+<td><p>月份的缩写名称。</p>
+</td>
+</tr>
+<tr>
+<td><p>MMMM</p>
+</td>
+<td><p>月份的完整名称。</p>
+</td>
+</tr>
+<tr>
+<td><p>y</p>
+</td>
+<td><p>不包含纪元的年份。如果不包含纪元的年份小于
+10，则显示不具有前导零的年份。</p>
+</td>
+</tr>
+<tr>
+<td><p>yy</p>
+</td>
+<td><p>不包含纪元的年份。如果不包含纪元的年份小于 10，则显示具有前导零的年份。</p>
+</td>
+</tr>
+<tr>
+<td><p>yyyy</p>
+</td>
+<td><p>包括纪元的四位数的年份。</p>
+</td>
+</tr>
+<tr>
+<td><p>h</p>
+</td>
+<td><p>12 小时制的小时。一位数的小时数没有前导零。</p>
+</td>
+</tr>
+<tr>
+<td><p>hh</p>
+</td>
+<td><p>12 小时制的小时。一位数的小时数有前导零。</p>
+</td>
+</tr>
+
+<tr>
+<td><p>H</p>
+</td>
+<td><p>24 小时制的小时。一位数的小时数没有前导零。</p>
+</td>
+</tr>
+<tr>
+<td><p>HH</p>
+</td>
+<td><p>24 小时制的小时。一位数的小时数有前导零。</p>
+</td>
+</tr>
+<tr>
+<td><p>m</p>
+</td>
+<td><p>分钟。一位数的分钟数没有前导零。</p>
+</td>
+</tr>
+<tr>
+<td><p>mm</p>
+</td>
+<td><p>分钟。一位数的分钟数有一个前导零。</p>
+</td>
+</tr>
+<tr>
+<td><p>s</p>
+</td>
+<td><p>秒。一位数的秒数没有前导零。</p>
+</td>
+</tr>
+<tr>
+<td><p>ss</p>
+</td>
+<td><p>秒。一位数的秒数有一个前导零。</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="control">
+<h2>2.4. Control<a class="headerlink" href="#control" title="Permalink to this headline">¶</a></h2>
+<p><p>控件基类。是表单、表格、树形、布局、菜单等所有控件的基类。
+提供宽度、高度、样式外观、显示、启用。 它本身无法被实例化。</p>
+</p>
+
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>id</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>控件唯一标识符。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>name</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>控件名称。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>visible</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示控件</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>enabled</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否禁用控件</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>cls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>样式类</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>style</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>样式</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>borderStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>边框样式。针对datagrid,panel,textbox,combobox等。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>width</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>宽度</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>height</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>高度</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>tooltip</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>提示信息</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>getEl ( )</p>
+</td>
+<td></td>
+<td><p>获取控件DOM元素</p>
+</td>
+<td><p>Element</p>
+</td>
+</tr>
+<tr>
+<td><p>on ( type, fn[, scope] )</p>
+</td>
+<td><p>type: String。事件类型，比如&#8221;click&#8221; fn: Function。事件处理函数 scope:
+Object。可选。事件处理函数的作用域对象</p>
+</td>
+<td><p>监听事件。 例如：</p>
+<pre>
+control.on("click", function(e){
+    //...
+});
+</pre>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>un ( type, fn[, scope] )</p>
+</td>
+<td><p>同上</p>
+</td>
+<td><p>取消监听事件</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>set ( options )</p>
+</td>
+<td><p>options: Object。参数配置对象</p>
+</td>
+<td><p>批量设置属性和事件，例如：</p>
+<pre>
+control.set({
+visible: false,
+width: 200,
+onclick: functoin(e){
+//...
+}
+});
+</pre>
+</td>
+<td></td>
+</tr>
+
+<tr>
+<td><p>render ( Element )</p>
+</td>
+<td></td>
+<td><p>控件加入DOM元素呈现，如：</p>
+<pre>
+control.render(document.body)
+</pre>
+
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>destroy ( )</p>
+</td>
+<td></td>
+<td><p>销毁控件</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getHeight ( )</p>
+</td>
+<td></td>
+<td><p>获取控件高度</p>
+</td>
+<td><p>Number</p>
+</td>
+</tr>
+<tr>
+<td><p>show ( )</p>
+</td>
+<td></td>
+<td><p>显示控件</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>hide ( )</p>
+</td>
+<td></td>
+<td><p>隐藏控件</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>enable ( )</p>
+</td>
+<td></td>
+<td><p>启用控件</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>disable ( )</p>
+</td>
+<td></td>
+<td><p>禁用控件</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>focus ( )</p>
+</td>
+<td></td>
+<td><p>获取焦点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>blur ( )</p>
+</td>
+<td></td>
+<td><p>失去焦点</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>doLayout ( )</p>
+</td>
+<td></td>
+<td><p>调整控件布局</p>
+</td>
+<td></td>
+</tr>
+ <tr>
+<td><p>addCls ( String )</p>
+</td>
+<td></td>
+<td><p>增加样式类。</p>
+</td>
+<td></td>
+</tr>
+ <tr>
+<td><p>removeCls ( String )</p>
+</td>
+<td></td>
+<td><p>去除样式类</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>destroy</p>
+</td>
+<td></td>
+<td><p>控件销毁时发生</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="messagebox">
+<h2>2.5. MessageBox<a class="headerlink" href="#messagebox" title="Permalink to this headline">¶</a></h2>
+<p><p>消息框。</p>
+</p>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-hello.jpg" />
+</div>
+<h4><p>Static Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>nui.alert（message, title, callback）</p>
+</td>
+<td></td>
+<td><p>提示框</p>
+</td>
+<td><p>messageId</p>
+</td>
+</tr>
+<tr>
+<td><p>nui.confirm（message, title, callback）</p>
+</td>
+<td></td>
+<td><p>选择提示框</p>
+</td>
+<td><p>messageId</p>
+</td>
+</tr>
+<tr>
+<td><p>nui.prompt（message, title, callback, multi）</p>
+</td>
+<td></td>
+<td><p>文本输入提示框</p>
+</td>
+<td><p>messageId</p>
+</td>
+</tr>
+<tr>
+<td><p>nui.loading（message, title）</p>
+</td>
+<td></td>
+<td><p>加载提示框</p>
+</td>
+<td><p>messageId</p>
+</td>
+</tr>
+<tr>
+<td><p>nui.showTips（options）</p>
+</td>
+<td>
+<pre>
+{
+    content: String,
+    state: String,      //default|success|info|warning|danger
+    x: String,          //left|center|right
+    y: String,          //top|center|bottom
+    timeout: Number     //自动消失间隔时间。默认2000（2秒）。
+}
+</pre>
+</td>
+<td><p>消息提示框</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>nui.showMessageBox（options）</p>
+</td>
+<td>
+<pre>
+{
+    title: String,
+    message: String,
+    buttons: ["ok", "no", "cancel"],
+    iconCls: "nui-messagebox-question",
+    html: String,
+    callback: function(action){
+    }
+}
+</pre>
+</td>
+<td><p>显示提示框</p>
+</td>
+<td><p>messageId</p>
+</td>
+</tr>
+<tr>
+<td><p>nui.hideMessageBox（messageId）</p>
+</td>
+<td></td>
+<td><p>隐藏提示框</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>nui.open（options）</p>
+</td>
+<td><p>options :</p>
+<pre>
+{
+    url: String,        //页面地址
+    title: String,      //标题
+    iconCls: String,    //标题图标
+    width: Number,      //宽度
+    height: Number,     //高度
+    allowResize: Boolean,       //允许尺寸调节
+    allowDrag: Boolean,         //允许拖拽位置
+    showCloseButton: Boolean,   //显示关闭按钮
+    showMaxButton: Boolean,     //显示最大化按钮
+    showModal: Boolean,         //显示遮罩
+    loadOnRefresh: false,       //true每次刷新都激发onload事件
+    onload: function () {       //弹出页面加载完成
+        var iframe = this.getIFrameEl();
+        var data = {};
+        //调用弹出页面方法进行初始化
+        iframe.contentWindow.SetData(data);
+
+    },
+    ondestroy: function (action) {  //弹出页面关闭前
+        if (action == "ok") {       //如果点击“确定”
+            var iframe = this.getIFrameEl();
+            //获取选中、编辑的结果
+            var data = iframe.contentWindow.GetData();
+            data = nui.clone(data);    //必须。克隆数据。
+            ......
+        }
+    }
+
+}
+</pre>
+</td>
+<td><p>弹出子页面</p>
+</td>
+<td></td>
+</tr>
+</table></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Base</a><ul>
+<li><a class="reference internal" href="#ajax">2.1. Ajax</a></li>
+<li><a class="reference internal" href="#json">2.2. JSON</a></li>
+<li><a class="reference internal" href="#date">2.3. Date</a></li>
+<li><a class="reference internal" href="#control">2.4. Control</a></li>
+<li><a class="reference internal" href="#messagebox">2.5. MessageBox</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api-overview.html"
+                        title="previous chapter">1. Overview</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api-forms.html"
+                        title="next chapter">3. Forms</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api-base.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="api-forms.html" title="3. Forms"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api-overview.html" title="1. Overview"
+             >previous</a> |</li>
+        <li><a href="index.html">NUI-API 3.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, primeton.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>

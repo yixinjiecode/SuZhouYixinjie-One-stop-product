@@ -1,0 +1,1564 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>5. Layouts &mdash; NUI-API 3.3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="NUI-API 3.3.0 documentation" href="index.html" />
+    <link rel="next" title="6. Navigations" href="api-navigations.html" />
+    <link rel="prev" title="4. Lists" href="api-lists.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="api-navigations.html" title="6. Navigations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api-lists.html" title="4. Lists"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">NUI-API 3.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="layouts">
+<h1>5. Layouts<a class="headerlink" href="#layouts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="fit">
+<h2>5.1. Fit<a class="headerlink" href="#fit" title="Permalink to this headline">¶</a></h2>
+<p><p>高度撑满布局控件。它的高度为：父元素高度 - 其他同级元素高度。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Properties</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+</table></div>
+<div class="section" id="panel">
+<h2>5.2. Panel<a class="headerlink" href="#panel" title="Permalink to this headline">¶</a></h2>
+<p><p>标题面板。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">div </span><span style="color:red">class</span><span style="color:blue">="nui-panel" </span><span style="color:red">title</span><span style="color:blue">="header" </span><span style="color:red">iconCls</span><span style="color:blue">="icon-add" </span><span style="color:red">style</span><span style="color:blue">="</span><span style="color:red">width</span><span style="color:blue">:300px;</span><span style="color:red">height</span><span style="color:blue">:200px;"
+    </span><span style="color:red">showToolbar</span><span style="color:blue">="true" </span><span style="color:red">showCloseButton</span><span style="color:blue">="true" </span><span style="color:red">showFooter</span><span style="color:blue">="true"
+&gt;
+    </span><span style="color:#006400">&lt;!--toolbar--&gt;
+    </span><span style="color:blue">&lt;</span><span style="color:maroon">div </span><span style="color:red">property</span><span style="color:blue">="toolbar"&gt;
+        &lt;</span><span style="color:maroon">input </span><span style="color:red">type</span><span style="color:blue">='button' </span><span style="color:red">value</span><span style="color:blue">='Toolbar' </span><span style="color:red">style</span><span style="color:blue">='</span><span style="color:red">vertical-align</span><span style="color:blue">:middle;'/&gt;
+    &lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+    </span><span style="color:#006400">&lt;!--footer--&gt;
+    </span><span style="color:blue">&lt;</span><span style="color:maroon">div </span><span style="color:red">property</span><span style="color:blue">="footer"&gt;
+        &lt;</span><span style="color:maroon">input </span><span style="color:red">type</span><span style="color:blue">='button' </span><span style="color:red">value</span><span style="color:blue">='Footer' </span><span style="color:red">style</span><span style="color:blue">='</span><span style="color:red">vertical-align</span><span style="color:blue">:middle;'/&gt;
+    &lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+    </span><span style="color:#006400">&lt;!--body--&gt;
+    </span>body<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;
+    </span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;</span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;</span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;</span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;</span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;</span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;</span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;</span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;</span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;</span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;</span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;</span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;</span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;</span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;</span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;</span>1<span style="color:blue">&lt;</span><span style="color:maroon">br </span><span style="color:blue">/&gt;
+&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-panel.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>title</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>标题文本</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>iconCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>标题图标样式类</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>iconStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>标题图标样式</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showHeader</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示头部</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showToolbar</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示工具栏</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showFooter</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示底部</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+
+<tr>
+<td><p>showCloseButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示关闭按钮</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showCollapseButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示折叠按钮</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>headerStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>头部样式。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>headerCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>头部样式类。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>bodyStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>内容区样式。如&#8221;padding:0px;&#8221;</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>bodyCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>内容区样式类。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>footerStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>底部样式。如&#8221;padding:0px;&#8221;</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>footerCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>底部样式类。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>toolbarStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>工具栏样式。如&#8221;padding:0px;&#8221;</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>toolbarCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>工具栏样式类。</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>url</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>内容区域地址</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>refreshOnExpand</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>展开则不断刷新。</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>maskOnLoad</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>加载时遮罩。</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>expanded</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>折叠状态</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>collapseOnTitleClick</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>点击头部时折叠展开</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>getHeaderEl ( )</p>
+</td>
+<td></td>
+<td><p>获取头部DOM对象</p>
+</td>
+<td><p>Element</p>
+</td>
+</tr>
+<tr>
+<td><p>getToolbarEl ( )</p>
+</td>
+<td></td>
+<td><p>获取工具栏DOM对象</p>
+</td>
+<td><p>Element</p>
+</td>
+</tr>
+<tr>
+<td><p>getFooterEl ( )</p>
+</td>
+<td></td>
+<td><p>获取底部DOM对象</p>
+</td>
+<td><p>Element</p>
+</td>
+</tr>
+<tr>
+<td><p>getBodyEl ( )</p>
+</td>
+<td></td>
+<td><p>获取内容区对象</p>
+</td>
+<td><p>Element</p>
+</td>
+</tr>
+<tr>
+<td><p>getIFrameEl ( )</p>
+</td>
+<td></td>
+<td><p>获取内容IFrame对象</p>
+</td>
+<td><p>Element</p>
+</td>
+</tr>
+<tr>
+<td><p>load ( url, onLoad, onDestroy )</p>
+</td>
+<td><p>onLoad, onDestroy为回调函数。</p>
+</td>
+<td><p>加载内容区域</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setBody ( Element )</p>
+</td>
+<td></td>
+<td><p>把DOM元素加入内容区</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setToolbar ( Element )</p>
+</td>
+<td></td>
+<td><p>把DOM元素加入工具栏</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>setFooter ( Element )</p>
+</td>
+<td></td>
+<td><p>把DOM元素加入底部</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+
+<h4><p>Events</p>
+<h4>
+
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>beforebuttonclick</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+name: String,   //按钮类型：close,collapse
+cancel: Boolean
+}
+</pre>
+</td>
+<td><p>点击右上角按钮前激发</p>
+</td>
+</tr>
+<tr>
+<td><p>buttonclick</p>
+</td>
+<td>
+<pre>
+{
+sender: Object,
+name: String
+}
+</pre>
+</td>
+<td><p>点击右上角按钮后激发</p>
+</td>
+</tr>
+<tr>
+<td><p>load</p>
+</td>
+<td></td>
+<td><p>内容加载完成时激发</p>
+</td>
+</tr>
+</table></div>
+<div class="section" id="window">
+<h2>5.3. Window<a class="headerlink" href="#window" title="Permalink to this headline">¶</a></h2>
+<p><p>弹出面板。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Panel</p>
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-window.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>allowDrag</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否允许拖拽位置</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowResize</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否允许调整尺寸</p>
+</td>
+<td></td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showCloseButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示关闭按钮</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showMaxButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示最大化按钮</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showModal</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示遮罩</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>showShadow</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示阴影</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>enableDragProxy</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>拖拽时是否显示代理</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>show ( left, top )showAtPos ( left, top )</p>
+</td>
+<td><p>left: left, center, right top: top, middle, bottom</p>
+</td>
+<td><p>弹出显示面板</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>showAtEl ( el, options)</p>
+</td>
+<td><p>el: html元素。 options:</p>
+<pre>
+ {
+xAlign: String, //outleft,left,center,right,outright
+yAlign: String  //above,top,middle,bottom,below
+}
+</pre>
+</td>
+<td><p>定位元素弹出显示</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>hide ( )</p>
+</td>
+<td></td>
+<td><p>隐藏面板</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>max ( )</p>
+</td>
+<td></td>
+<td><p>最大化</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>restore ( )</p>
+</td>
+<td></td>
+<td><p>还原</p>
+</td>
+<td></td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+</table></div>
+<div class="section" id="splitter">
+<h2>5.4. Splitter<a class="headerlink" href="#splitter" title="Permalink to this headline">¶</a></h2>
+<p><p>分隔容器。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Usage</p>
+</h4>
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">div </span><span style="color:red">class</span><span style="color:blue">="nui-splitter" </span><span style="color:red">style</span><span style="color:blue">="</span><span style="color:red">width</span><span style="color:blue">:350px;</span><span style="color:red">height</span><span style="color:blue">:200px;"&gt;
+    &lt;</span><span style="color:maroon">div </span><span style="color:red">size</span><span style="color:blue">="30%" </span><span style="color:red">showCollapseButton</span><span style="color:blue">="true"&gt;
+        </span>1
+    <span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">div </span><span style="color:red">showCollapseButton</span><span style="color:blue">="true"&gt;
+        </span>2
+    <span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-splitter.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>vertical</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否竖向</p>
+</td>
+<td><p>false</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>allowResize</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否允许拖拽调整</p>
+</td>
+<td><p>true</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+<tr>
+<td><p>handlerSize</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>分割条尺寸</p>
+</td>
+<td><p>6</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+<tr>
+<td><p>setPanes（panes）</p>
+</td>
+<td><p>panes：Array。2个元素。pane对象。</p>
+</td>
+<td><p>设置面板配置数组。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>updatePane（index, options）</p>
+</td>
+<td></td>
+<td><p>更新面板对象。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getPane（index）</p>
+</td>
+<td></td>
+<td><p>获取面板对象。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getPaneEl（index）</p>
+</td>
+<td></td>
+<td><p>获取面板对象DOM元素。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>expandPane（index）</p>
+</td>
+<td></td>
+<td><p>展开面板。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>collapsePane（index）</p>
+</td>
+<td></td>
+<td><p>收缩面板。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>showPane（index）</p>
+</td>
+<td></td>
+<td><p>显示面板。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>hidePane（index）</p>
+</td>
+<td></td>
+<td><p>隐藏面板。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getPaneEl（index）</p>
+</td>
+<td></td>
+<td><p>获取面板DOM对象。</p>
+</td>
+<td><p>Element</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Events</p>
+</h4>
+
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+<tr>
+<td><p>resize</p>
+</td>
+<td></td>
+<td><p>拖拽调节尺寸时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>collapse</p>
+</td>
+<td></td>
+<td><p>折叠面板时发生</p>
+</td>
+</tr>
+<tr>
+<td><p>expand</p>
+</td>
+<td></td>
+<td><p>展开面板时发生</p>
+</td>
+</tr>
+</table>
+
+
+<hr />
+
+<h4><p>Pane Object</p>
+</h4>
+
+<p><p>Splitter 面板对象，属性如下：</p>
+</p>
+<table>
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+</th></tr>
+<tr>
+<td><p>minSize</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>最小尺寸</p>
+</td>
+<td><p>80</p>
+</td>
+
+</tr>
+<tr>
+<td><p>maxSize</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>最大尺寸</p>
+</td>
+<td><p>3000</p>
+</td>
+
+</tr>
+<tr>
+<td><p>size</p>
+</td>
+<td><p>Number/String</p>
+</td>
+<td><p>尺寸</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>showCollapseButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示折叠图标</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>cls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>面板样式类</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>style</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>面板样式</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>visible</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>expanded</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否折叠</p>
+</td>
+<td></td>
+
+</tr>
+</table></div>
+<div class="section" id="layout">
+<h2>5.5. Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h2>
+<p><p>布局管理器。</p>
+</p>
+
+<h4><p>Extend</p>
+</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nui.Control</p>
+<h4><p>Usage</p>
+</h4>
+
+<pre class="code"><span style="color:blue">&lt;</span><span style="color:maroon">div </span><span style="color:red">id</span><span style="color:blue">="layout1" </span><span style="color:red">class</span><span style="color:blue">="nui-layout" </span><span style="color:red">style</span><span style="color:blue">="</span><span style="color:red">width</span><span style="color:blue">:600px;</span><span style="color:red">height</span><span style="color:blue">:400px;"&gt;
+    &lt;</span><span style="color:maroon">div </span><span style="color:red">title</span><span style="color:blue">="north" </span><span style="color:red">region</span><span style="color:blue">="north" </span><span style="color:red">height</span><span style="color:blue">="80" &gt;
+        </span>north
+    <span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">div </span><span style="color:red">title</span><span style="color:blue">="south" </span><span style="color:red">region</span><span style="color:blue">="south" </span><span style="color:red">showSplit</span><span style="color:blue">="false" </span><span style="color:red">showHeader</span><span style="color:blue">="true" </span><span style="color:red">height</span><span style="color:blue">="80"  &gt;
+        </span>south
+    <span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">div </span><span style="color:red">title</span><span style="color:blue">="west" </span><span style="color:red">region</span><span style="color:blue">="west" </span><span style="color:red">width</span><span style="color:blue">="200" &gt;
+        </span>west
+    <span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">div </span><span style="color:red">title</span><span style="color:blue">="east" </span><span style="color:red">region</span><span style="color:blue">="east"  </span><span style="color:red">showCloseButton</span><span style="color:blue">="true" &gt;
+        </span>east
+    <span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+    &lt;</span><span style="color:maroon">div </span><span style="color:red">title</span><span style="color:blue">="center" </span><span style="color:red">region</span><span style="color:blue">="center" &gt;
+        </span>center
+    <span style="color:blue">&lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+    &lt;/</span><span style="color:maroon">div</span><span style="color:blue">&gt;
+</span></pre>
+
+<h4><p>Screenshots</p>
+</h4><div class="figure">
+<img alt="" src="_images/api-layout.jpg" />
+</div>
+<h4><p>Properties</p>
+</h4>
+
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+  </th><th>
+
+Set?  </th><th>
+
+Get?  </th><th>
+
+Tag?</th></tr>
+<tr>
+<td><p>splitSize</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>分割条尺寸</p>
+</td>
+<td><p>6</p>
+</td>
+<td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td><td style="text-align:center;"><p>√</p>
+</td>
+</tr>
+</table>
+
+<h4><p>Methods</p>
+</h4>
+
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Parameter</p>
+</th><th><p>Description</p>
+</th><th><p>Return</p>
+</th></tr>
+
+<tr>
+<td><p>setRegions ( Array )</p>
+</td>
+<td></td>
+<td><p>设置Regoin对象数组</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>addRegion ( Object [, index] )</p>
+</td>
+<td><p>Object：Regoin对象。 index：Number。索引号。</p>
+</td>
+<td><p>增加region。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>removeRegion ( String )</p>
+</td>
+<td></td>
+<td><p>删除region面板。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>updateRegion ( String, options )</p>
+</td>
+<td></td>
+<td><p>更新region面板</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>expandRegion ( String )</p>
+</td>
+<td></td>
+<td><p>展开regoin对象。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>collapseRegion ( String )</p>
+</td>
+<td></td>
+<td><p>收缩regoin对象。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>showRegion ( String )</p>
+</td>
+<td></td>
+<td><p>显示regoin对象。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>hideRegion ( String )</p>
+</td>
+<td></td>
+<td><p>隐藏regoin对象。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>isExpandRegion ( String )</p>
+</td>
+<td></td>
+<td><p>是否展开region。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>isVisibleRegion ( String )</p>
+</td>
+<td></td>
+<td><p>是否显示region。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getRegion ( String )</p>
+</td>
+<td><p>north/south/west/east/center</p>
+</td>
+<td><p>获取Regoin对象。</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td><p>getRegionBodyEl ( String )</p>
+</td>
+<td></td>
+<td><p>获取region面板对象内容区DOM元素</p>
+</td>
+<td></td>
+</tr>
+
+</table>
+
+<h4><p>Events</p>
+</h4>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>EventObject</p>
+</th><th><p>Description</p>
+</th></tr>
+
+
+</table>
+
+<h4><p>Region Object</p>
+</h4>
+
+<p><p>Layout 面板对象，属性如下：</p>
+</p>
+<table border="1px" bordercolor="#cccccc"  cellspacing="0">
+<tr><th><p>Name</p>
+</th><th><p>Type</p>
+</th><th><p>Description</p>
+</th><th><p>Default</p>
+</th></tr>
+<tr>
+<td><p>region</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>面板名称</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>title</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>标题文本</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>iconCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>标题图标样式类</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>iconStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>标题图标样式</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>cls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>样式类</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>style</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>样式</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>headerCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>头部样式类</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>headerStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>头部样式</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>bodyCls</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>内容区样式类</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>bodyStyle</p>
+</td>
+<td><p>String</p>
+</td>
+<td><p>内容区样式</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>visible</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+<tr>
+<td><p>expanded</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否展开</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+<tr>
+<td><p>showCollapseButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示折叠按钮</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+<tr>
+<td><p>showCloseButton</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示关闭按钮</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+
+<tr>
+<td><p>showSplit</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示分割条</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+<tr>
+<td><p>showHeader</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否显示头部</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+<tr>
+<td><p>allowResize</p>
+</td>
+<td><p>Boolean</p>
+</td>
+<td><p>是否允许拖拽调节</p>
+</td>
+<td><p>true</p>
+</td>
+
+</tr>
+<tr>
+<td><p>splitSize</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>分隔条尺寸</p>
+</td>
+<td><p>6</p>
+</td>
+
+</tr>
+
+<tr>
+<td><p>width</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>宽度</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>height</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>高度</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>minWidth</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>最小宽度</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>minHeight</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>最小高度</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>maxWidth</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>最大宽度</p>
+</td>
+<td></td>
+
+</tr>
+<tr>
+<td><p>maxHeight</p>
+</td>
+<td><p>Number</p>
+</td>
+<td><p>最大高度</p>
+</td>
+<td></td>
+
+</tr>
+</table></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5. Layouts</a><ul>
+<li><a class="reference internal" href="#fit">5.1. Fit</a></li>
+<li><a class="reference internal" href="#panel">5.2. Panel</a></li>
+<li><a class="reference internal" href="#window">5.3. Window</a></li>
+<li><a class="reference internal" href="#splitter">5.4. Splitter</a></li>
+<li><a class="reference internal" href="#layout">5.5. Layout</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api-lists.html"
+                        title="previous chapter">4. Lists</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api-navigations.html"
+                        title="next chapter">6. Navigations</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api-layouts.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="api-navigations.html" title="6. Navigations"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api-lists.html" title="4. Lists"
+             >previous</a> |</li>
+        <li><a href="index.html">NUI-API 3.3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, primeton.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>
